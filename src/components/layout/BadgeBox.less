@@ -1,0 +1,28 @@
+@import "../vars.less";
+.badgeBox {
+  display: flex;
+  align-self: center;
+  .badge {
+    width: 40px;
+    height: 48px;
+    padding: 14px 8px 6px 8px;
+    background-color: transparent;
+    border-bottom: 2px solid @white;
+    display: flex;
+    color: @white;
+    transition: border-color 0.3s ease-in;
+    margin-right: 6px;
+    &:hover {
+      border-bottom: 2px solid @primary-color;
+    }
+    .size {
+      font-size: 15px;
+      margin-top: 5px;
+    }
+    .avatar{
+      padding-bottom: 10px!important
+    }
+  }
+
+
+}

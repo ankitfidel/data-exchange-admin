@@ -1,0 +1,816 @@
+@import "./vars.less";
+//@import url('https://fonts.googleapis.com/css?family=Poppins');
+@font-face {
+       font-family: 'BebasNeue_Regular';
+       src: url('./fonts/BebasNeue_Regular.ttf') format('truetype');
+       font-weight: normal;
+       font-style: normal;
+
+   }
+   @font-face {
+          font-family: 'DIN_Next_regular';
+          src: url('./fonts/Linotype_DIN_Next_LT_Pro_Regular.ttf') format('truetype');
+          font-weight: normal;
+          font-style: normal;
+
+      }
+@green: #64ea91;
+@blue: #8fc9fb;
+@purple: #d897eb;
+@red: #f69899;
+@yellow: #f8c82e;
+@peach: #f797d6;
+@borderBase: #e5e5e5;
+@borderSplit: #f4f4f4;
+@grass: #d6fbb5;
+@sky: #c1e0fc;
+@arsenic: #403F4C;
+@desire: #E84855;
+@stil_de_gran_yellow: #F9DC5C;
+@brillant_azure: #3185FC;
+@portland_orange: #F46036;
+@jungle_green: #1B998B;
+@space_cadet: #2E294E;
+@red_purple: #E40066;
+@tumblewed: #F1AB86;
+@russian_green: #5C946E;
+@darky_blue: #1d2a3a;
+@midnight_green:#114B5F;
+@eton_blue:#88D498;
+@white:#fff;
+@sugar_plum:#8E5572;
+
+
+:global {
+  .ant-table{font-size: 13px !important;}
+  .selected{color: darken(#fc3d66, 1%) !important; font-weight: normal;}
+  .ant-menu-dark .ant-menu-inline.ant-menu-sub{background: darken(#262b33, 2%)}
+  .ant-spin-spinning{background: rgb(255,255,255);}
+  .header-menu {
+    background-color: @primary-color !important;
+  }
+  .ant-modal-mask {
+    background-color: rgba(55, 55, 55, 0.2);
+  }
+  .ant-modal-content {
+    box-shadow: none;
+  }
+  .ant-card {
+    margin-bottom: 10px;
+    &:hover {
+      overflow: auto;
+    }
+  }
+  .ant-badge:not(.ant-badge-status) {
+    margin-right: 16px;
+  }
+  .head-example {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: #eee;
+    display: inline-block;
+  }
+  body {
+    text-rendering: geometricPrecision;
+    font-size: 13px !important;
+  }
+  .ant-fullcalendar-header .ant-select, .ant-fullcalendar-header .ant-button {
+    margin-bottom: 10px;
+  }
+  .ant-input-group > [class*="col-"] {
+    margin-bottom: 10px
+  }
+  // LEFT SIDEBAR BLUE THEME
+  .menu_blue {
+    background-color: #2196F3!important;
+    color: white;
+    border-color: #2196F3!important;
+  }
+  .menu_blue a {
+    color: white;
+  }
+  .menu_blue a:hover {
+    color: #080716;
+  }
+  .menu_blue ul>li a:hover {
+    color: #080716;
+  }
+  .menu_blue li:hover {
+    color: #080716;
+  }
+  .menu_blue ul>li {
+    color: white;
+    background-color: #2196F3!important;
+  }
+
+
+  //Sidebar Menu Theme Styles
+
+   .menu_white {
+    background-color: @primary-color !important;
+    color: @arsenic;
+    border-color: @white !important;
+    a {
+      color: @arsenic;
+      &:hover {
+        color: @arsenic;
+      }
+    }
+    ul {
+      >li {
+        a {
+          &:hover {
+            color: @desire;
+          }
+        }
+        .ant-menu-submenu-title{&:hover{
+        color:@desire;
+        }}
+      .ant-menu-item-selected{
+
+          &::after{
+        border-color:@desire;
+
+
+        }
+      }
+        color:@arsenic;
+        background-color: @white !important;
+      }
+    }
+    li {
+      &:hover {
+        color: @desire;
+      }
+    }
+  }
+
+
+ .menu_sugar_plum {
+   .ant-btn:hover, .ant-btn:focus{color: @sugar_plum;border-color: @sugar_plum;}
+   .ant-checkbox-checked:after{border: 1px solid @sugar_plum;}
+   .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @sugar_plum;border-color: @sugar_plum;}
+   .ant-pagination-item-active{background: @sugar_plum; border-color: @sugar_plum}
+   ::selection{background: @sugar_plum; }
+   .ant-select-dropdown-menu-item:hover{background-color:fade(@sugar_plum, 10%) !important; }
+     .ant-btn-primary{color: #fff;  background-color: @sugar_plum;border-color: lighten(@sugar_plum, 50%) !important;  }
+   .ant-card{background:fade(@sugar_plum, 9%) !important;
+     .ant-table-thead > tr > th{
+       background:fade(@sugar_plum, 0%) !important;
+     }
+     .ant-table-tbody > tr:hover > td{background: fade(@sugar_plum, 30%) !important;}
+   }
+   .text-primary{color: @sugar_plum !important}
+   .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @sugar_plum; border-radius: 4px;
+   &:hover{  background-color: rgba(142, 85, 114, 0.3) !important;}
+   }
+   background-color: @sugar_plum !important;
+   color: white;
+ //  border-color: @sugar_plum !important;
+   .selected{color: lighten(@sugar_plum, 50%) !important; font-weight: normal; text-decoration: underline;}
+
+    a {
+      color: @sugar_plum;
+      &:hover {
+        color: darken(@sugar_plum, 30%);
+      }
+    }
+    .menulink{
+        a {
+          color: #f8f8f8 !important;
+          &:hover {
+            color: @sugar_plum;
+          }
+        }
+        .ant-menu-submenu-title{&:hover{
+        color:@sugar_plum;
+        }}
+      .ant-menu-item-selected{
+          &::after{
+        border-color:@sugar_plum;
+        }
+      }
+        color:white;
+        background-color: @sugar_plum !important;
+      }
+    li {
+      &:hover {
+        color: @green;
+      }
+    }
+    }
+
+
+
+  .menu_midnight_green {
+    .ant-btn:hover, .ant-btn:focus{color: @midnight_green;border-color: @midnight_green;}
+    .ant-checkbox-checked:after{border: 1px solid @midnight_green;}
+     .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @midnight_green;border-color: @midnight_green;}
+     .ant-pagination-item-active{background: @midnight_green; border-color: @midnight_green}
+     ::selection{background: @midnight_green; }
+    .ant-select-dropdown-menu-item:hover{background-color:fade(@midnight_green, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @midnight_green;border-color: lighten(@midnight_green, 50%) !important;  }
+    .ant-card{background:fade(@midnight_green, 9%) !important;
+      .ant-table-thead > tr > th{
+        background:fade(@midnight_green, 0%) !important;
+      }
+      .ant-table-tbody > tr:hover > td{background: fade(@midnight_green, 30%) !important;}
+    }
+.text-primary{color: @midnight_green !important}
+.bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @midnight_green; border-radius: 4px;
+&:hover{  background-color: rgba(17, 75, 95, 0.3) !important;}
+}
+    .selected{color: lighten(@midnight_green, 50%) !important; font-weight: normal;}
+    background-color: @midnight_green !important;
+  //  color: white;
+  //  border-color: @midnight_green !important;
+    a {
+     color: @midnight_green;
+      &:hover {
+        color:  darken(@midnight_green, 30%);
+      }
+    }
+    .menulink{
+        a {
+          color: #f8f8f8 !important;
+          &:hover {
+            color: @eton_blue;
+          }
+        }
+        .ant-menu-submenu-title{&:hover{
+        color:@eton_blue;
+        }}
+      .ant-menu-item-selected{
+          &::after{
+        border-color:@eton_blue;
+        }
+      }
+        color:white;
+     background-color: @midnight_green !important;
+      }
+
+    li {
+      &:hover {
+        color: @eton_blue;
+      }
+    }
+  }
+
+
+ .menu_arsenic {
+   .ant-btn:hover, .ant-btn:focus{color: @arsenic;border-color: @arsenic;}
+   .ant-checkbox-checked:after{border: 1px solid @arsenic;}
+    .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @arsenic;border-color: @arsenic;}
+    .ant-pagination-item-active{background: @arsenic; border-color: @arsenic}
+    ::selection{background: @arsenic; }
+   .ant-select-dropdown-menu-item:hover{background-color:fade(@arsenic, 10%) !important; }
+     .ant-btn-primary{color: #fff;  background-color: @arsenic;border-color: lighten(@arsenic, 50%) !important;  }
+   .ant-card{background:fade(@arsenic, 9%) !important;
+     .ant-table-thead > tr > th{
+       background:fade(@arsenic, 0%) !important;
+     }
+     .ant-table-tbody > tr:hover > td{background: fade(@arsenic, 30%) !important;}
+   }
+   .text-primary{color: @arsenic !important}
+   .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @arsenic; border-radius: 4px;
+   &:hover{  background-color: rgba(64, 63, 76, 0.3) !important;}
+   }
+   .selected{color: lighten(@arsenic, 50%) !important; font-weight: normal;}
+    background-color: @arsenic !important;
+  //  color: white;
+  //  border-color: @arsenic !important;
+    a {
+     color: @arsenic;
+      &:hover {
+        color: darken(@arsenic, 30%);
+      }
+    }
+    .menulink{
+        a {
+          color: #f8f8f8 !important;
+          &:hover {
+            color: @arsenic;
+          }
+        }
+        .ant-menu-submenu-title{&:hover{
+        color:@arsenic;
+        }}
+      .ant-menu-item-selected{
+          &::after{
+        border-color:@arsenic;
+        }
+      }
+        color:white;
+     background-color: @arsenic !important;
+      }
+    li {
+      &:hover {
+        color: @stil_de_gran_yellow;
+      }
+    }
+  }
+
+  .menu_brillant_azure{
+    .ant-btn:hover, .ant-btn:focus{color: @brillant_azure;border-color: @brillant_azure;}
+    .ant-checkbox-checked:after{border: 1px solid @brillant_azure;}
+     .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @brillant_azure;border-color: @brillant_azure;}
+     .ant-pagination-item-active{background: @brillant_azure; border-color: @brillant_azure}
+     ::selection{background: @brillant_azure; }
+    .ant-select-dropdown-menu-item:hover{background-color:fade(@brillant_azure, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @brillant_azure;border-color: lighten(@brillant_azure, 50%) !important;  }
+    .ant-card{background:fade(@brillant_azure, 9%) !important;
+      .ant-table-thead > tr > th{
+        background:fade(@brillant_azure, 0%) !important;
+      }
+      .ant-table-tbody > tr:hover > td{background: fade(@brillant_azure, 30%) !important;}
+    }
+    .text-primary{color: @brillant_azure !important}
+    .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @brillant_azure; border-radius: 4px;
+    &:hover{  background-color: rgba(49, 133, 252, 0.3) !important;}
+    }
+    .selected{color: lighten(@brillant_azure, 50%) !important; font-weight: normal;}
+     background-color: @brillant_azure !important;
+   //  color: white;
+   //  border-color: @arsenic !important;
+     a {
+      color: @brillant_azure;
+       &:hover {
+         color: darken(@brillant_azure, 30%);
+       }
+     }
+     .menulink{
+         a {
+           color: #f8f8f8 !important;
+           &:hover {
+             color: @brillant_azure;
+           }
+         }
+         .ant-menu-submenu-title{&:hover{
+         color:@brillant_azure;
+         }}
+       .ant-menu-item-selected{
+           &::after{
+         border-color:@brillant_azure;
+         }
+       }
+         color:white;
+      background-color: @brillant_azure !important;
+       }
+    li {
+      &:hover {
+        color: @brillant_azure;
+      }
+    }
+  }
+  .menu_portland_orange {
+    .ant-btn:hover, .ant-btn:focus{color: @portland_orange;border-color: @portland_orange;}
+    .ant-checkbox-checked:after{border: 1px solid @portland_orange;}
+     .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @portland_orange;border-color: @portland_orange;}
+     .ant-pagination-item-active{background: @portland_orange; border-color: @portland_orange}
+     ::selection{background: @portland_orange; }
+    .ant-select-dropdown-menu-item:hover{background-color:fade(@portland_orange, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @portland_orange;border-color: lighten(@portland_orange, 50%) !important;  }
+    .ant-card{background:fade(@portland_orange, 9%) !important;
+      .ant-table-thead > tr > th{
+        background:fade(@portland_orange, 0%) !important;
+      }
+      .ant-table-tbody > tr:hover > td{background: fade(@portland_orange, 30%) !important;}
+    }
+    .text-primary{color: @portland_orange !important}
+    .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @portland_orange; border-radius: 4px;
+    &:hover{  background-color: rgba(244, 96, 54, 0.3) !important;}
+    }
+    .selected{color: lighten(@portland_orange, 50%) !important; font-weight: normal;}
+     background-color: @portland_orange !important;
+   //  color: white;
+   //  border-color: @arsenic !important;
+     a {
+      color: @portland_orange;
+       &:hover {
+         color: darken(@portland_orange, 30%);
+       }
+     }
+     .menulink{
+         a {
+           color: #f8f8f8 !important;
+           &:hover {
+             color: @portland_orange;
+           }
+         }
+         .ant-menu-submenu-title{&:hover{
+         color:@portland_orange;
+         }}
+       .ant-menu-item-selected{
+           &::after{
+         border-color:@portland_orange;
+         }
+       }
+         color:white;
+      background-color: @portland_orange !important;
+       }
+    li {
+      &:hover {
+        color: @green;
+      }
+    }
+  }
+
+  .menu_jungle_green {
+    .ant-btn:hover, .ant-btn:focus{color: @jungle_green;border-color: @jungle_green;}
+    .ant-checkbox-checked:after{border: 1px solid @jungle_green;}
+     .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @jungle_green;border-color: @jungle_green;}
+     .ant-pagination-item-active{background: @jungle_green; border-color: @jungle_green}
+     ::selection{background: @jungle_green; }
+    .ant-select-dropdown-menu-item:hover{background-color:fade(@jungle_green, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @jungle_green;border-color: lighten(@jungle_green, 50%) !important;  }
+    .ant-card{background:fade(@jungle_green, 9%) !important;
+      .ant-table-thead > tr > th{
+        background:fade(@jungle_green, 0%) !important;
+      }
+      .ant-table-tbody > tr:hover > td{background: fade(@jungle_green, 30%) !important;}
+    }
+    .text-primary{color: @jungle_green !important}
+    .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @jungle_green; border-radius: 4px;
+    &:hover{  background-color: rgba(27, 153, 139, 0.3) !important;}
+    }
+    .selected{color: lighten(@jungle_green, 50%) !important; font-weight: normal;}
+     background-color: @jungle_green !important;
+   //  color: white;
+   //  border-color: @arsenic !important;
+     a {
+      color: @jungle_green;
+       &:hover {
+         color:  darken(@jungle_green, 30%);
+       }
+     }
+     .menulink{
+         a {
+           color: #f8f8f8 !important;
+           &:hover {
+             color: @jungle_green;
+           }
+         }
+         .ant-menu-submenu-title{&:hover{
+         color:@jungle_green;
+         }}
+       .ant-menu-item-selected{
+           &::after{
+         border-color:@jungle_green;
+         }
+       }
+         color:white;
+      background-color: @jungle_green !important;
+       }
+    li {
+      &:hover {
+        color: @jungle_green;
+      }
+    }
+  }
+
+    .menu_desire {
+      .ant-btn:hover, .ant-btn:focus{color: @desire;border-color: @desire;}
+      .ant-checkbox-checked:after{border: 1px solid @desire;}
+       .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @desire;border-color: @desire;}
+       .ant-pagination-item-active{background: @desire; border-color: @desire}
+       ::selection{background: @desire; }
+      .ant-select-dropdown-menu-item:hover{background-color:fade(@desire, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @desire;border-color: lighten(@desire, 50%) !important;  }
+      .ant-card{background:fade(@desire, 9%) !important;
+        .ant-table-thead > tr > th{
+          background:fade(@desire, 0%) !important;
+        }
+        .ant-table-tbody > tr:hover > td{background: fade(@desire, 30%) !important;}
+      }
+      .text-primary{color: @desire !important}
+      .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @desire; border-radius: 4px;
+      &:hover{  background-color: rgba(232, 72, 85, 0.3) !important;}
+      }
+      .selected{color: lighten(@desire, 50%) !important; font-weight: normal;}
+       background-color: @desire !important;
+     //  color: white;
+     //  border-color: @arsenic !important;
+       a {
+        color: @desire;
+         &:hover {
+           color:darken(@desire, 30%);
+         }
+       }
+       .menulink{
+           a {
+             color: #f8f8f8 !important;
+             &:hover {
+               color: @desire;
+             }
+           }
+           .ant-menu-submenu-title{&:hover{
+           color:@desire;
+           }}
+         .ant-menu-item-selected{
+             &::after{
+           border-color:@desire;
+           }
+         }
+           color:white;
+        background-color: @desire !important;
+         }
+    li {
+      &:hover {
+        color: @desire;
+      }
+    }
+  }
+
+ .menu_stil_de_gran_yellow {
+   .ant-btn:hover, .ant-btn:focus{color: @stil_de_gran_yellow;border-color: @stil_de_gran_yellow;}
+   .ant-checkbox-checked:after{border: 1px solid @stil_de_gran_yellow;}
+    .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @stil_de_gran_yellow;border-color: @stil_de_gran_yellow;}
+    .ant-pagination-item-active{background: @stil_de_gran_yellow; border-color: @stil_de_gran_yellow}
+    ::selection{background: @stil_de_gran_yellow; }
+   .ant-select-dropdown-menu-item:hover{background-color:fade(@stil_de_gran_yellow, 10%) !important; }
+   .ant-btn-primary{color: #fff;  background-color: @stil_de_gran_yellow;border-color: lighten(@stil_de_gran_yellow, 50%) !important;  }
+   .ant-card{background:fade(@stil_de_gran_yellow, 9%) !important;
+     .ant-table-thead > tr > th{
+       background:fade(@stil_de_gran_yellow, 0%) !important;
+     }
+     .ant-table-tbody > tr:hover > td{background: fade(@stil_de_gran_yellow, 30%) !important;}
+   }
+   .text-primary{color: @stil_de_gran_yellow !important}
+   .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @stil_de_gran_yellow; border-radius: 4px;
+   &:hover{  background-color: rgba(249, 220, 92, 0.3) !important;}
+   }
+   .selected{color: lighten(@stil_de_gran_yellow, 50%) !important; font-weight: normal;}
+    background-color: @stil_de_gran_yellow !important;
+  //  color: white;
+  //  border-color: @arsenic !important;
+    a {
+     color: @stil_de_gran_yellow;
+      &:hover {
+        color: darken(@stil_de_gran_yellow, 30%);
+      }
+    }
+    .menulink{
+        a {
+          color: #f8f8f8 !important;
+          &:hover {
+            color: @stil_de_gran_yellow;
+          }
+        }
+        .ant-menu-submenu-title{&:hover{
+        color:@stil_de_gran_yellow;
+        }}
+      .ant-menu-item-selected{
+          &::after{
+        border-color:@stil_de_gran_yellow;
+        }
+      }
+        color:white;
+     background-color: @stil_de_gran_yellow !important;
+      }
+    li {
+      &:hover {
+        color: @stil_de_gran_yellow;
+      }
+    }
+  }
+    .menu_purple {
+      .ant-btn:hover, .ant-btn:focus{color: @purple;border-color: @purple;}
+      .ant-checkbox-checked:after{border: 1px solid @purple;}
+       .ant-checkbox-checked .ant-checkbox-inner, .ant-checkbox-indeterminate .ant-checkbox-inner{    background-color: @purple;border-color: @purple;}
+       .ant-pagination-item-active{background: @purple; border-color: @purple}
+       ::selection{background: @purple; }
+      .ant-select-dropdown-menu-item:hover{background-color:fade(@purple, 10%) !important; }
+      .ant-btn-primary{color: #fff;  background-color: @purple;border-color: lighten(@purple, 50%) !important;  }
+      .ant-card{background:fade(@purple, 9%) !important;
+        .ant-table-thead > tr > th{
+          background:fade(@purple, 0%) !important;
+        }
+        .ant-table-tbody > tr:hover > td{background: fade(@purple, 30%) !important;}
+      }
+
+      .text-primary{color: @purple !important}
+      .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @purple; border-radius: 4px;
+      &:hover{  background-color: rgba(216, 151, 235, 0.3) !important;}
+      }
+      .selected{color: lighten(@purple, 50%) !important; font-weight: normal;}
+       background-color: @purple !important;
+     //  color: white;
+     //  border-color: @arsenic !important;
+       a {
+        color: @purple;
+         &:hover {
+           color: darken(@purple, 30%);
+         }
+       }
+       .menulink{
+           a {
+             color: #f8f8f8 !important;
+             &:hover {
+               color: @purple;
+             }
+           }
+           .ant-menu-submenu-title{&:hover{
+           color:@purple;
+           }}
+         .ant-menu-item-selected{
+             &::after{
+           border-color:@purple;
+           }
+         }
+           color:white;
+        background-color: @purple !important;
+         }
+    li {
+      &:hover {
+        color: @purple;
+      }
+    }
+  }
+
+    //Header & Navbar Theme Styles                                                                         //Header & Navbar Theme Styles
+.header_white{
+    .header-menu {
+      background-color: @primary-color !important;
+      div a {
+        border-bottom: 2px solid @arsenic!important;
+        &:hover{
+        border-bottom: 2px solid @desire!important;
+
+        }
+      }
+      .anticon {
+        color: @arsenic!important
+      }
+    }
+    .foldIcon {
+      color: @arsenic!important
+    }
+  }
+
+ .header_sugar_plum{
+    .header-menu {
+      background-color: @sugar_plum !important;
+      div a {
+        border-bottom: 2px solid white!important;
+        &:hover{
+        border-bottom: 2px solid @green!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+
+  .header_midnight_green{
+    .header-menu {
+      background-color: @midnight_green !important;
+      div a {
+        border-bottom: 2px solid white!important;
+        &:hover{
+        border-bottom: 2px solid @eton_blue!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+  .header_arsenic {
+    .header-menu {
+      background-color: @arsenic !important;
+      div a {
+        border-bottom: 2px solid white!important;
+         &:hover{
+        border-bottom: 2px solid @desire!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+
+  .header_brillant_azure {
+    .header-menu {
+      background-color: @brillant_azure !important;
+      div a {
+        border-bottom: 2px solid white!important;
+         &:hover{
+        border-bottom: 2px solid @stil_de_gran_yellow!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+
+  .header_portland_orange {
+    .header-menu {
+      background-color: @portland_orange !important;
+      div a {
+        border-bottom: 2px solid white!important;
+         &:hover{
+        border-bottom: 2px solid @stil_de_gran_yellow!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+  .header_jungle_green {
+    .header-menu {
+      background-color: @jungle_green !important;
+      div a {
+        border-bottom: 2px solid white!important;
+         &:hover{
+        border-bottom: 2px solid @arsenic!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+  .header_desire {
+    .header-menu {
+      background-color: @desire !important;
+      div a {
+        border-bottom: 2px solid white!important;
+         &:hover{
+        border-bottom: 2px solid @stil_de_gran_yellow!important;
+
+        }
+      }
+      .anticon {
+        color: white!important
+      }
+    }
+    .foldIcon {
+      color: white!important
+    }
+  }
+  .header_stil_de_gran_yellow {
+    .header-menu {
+      background-color: @stil_de_gran_yellow !important;
+      div a {
+        border-bottom: 2px solid @arsenic!important;
+         &:hover{
+        border-bottom: 2px solid @desire!important;
+
+        }
+      }
+      .anticon {
+        color: @arsenic!important
+      }
+    }
+    .foldIcon {
+      color: @arsenic!important
+    }
+  }
+  .header_purple {
+    .header-menu {
+      background-color: @purple !important;
+      div a {
+        border-bottom: 2px solid @white!important;
+         &:hover{
+        border-bottom: 2px solid @brillant_azure!important;
+
+        }
+      }
+      .anticon {
+        color: @white!important
+      }
+    }
+    .foldIcon {
+      color: @white!important
+    }
+  }
+}
