@@ -18,6 +18,8 @@ import Expense from '../components/dashboard/expense'
 import './dashboard.less'
 import cookie from 'react-cookies'
 
+const axios = require('axios');
+import { axiosrequest } from './axiosrequest';
 const styles = {
     textAlign: {
         textAlign: 'right'
@@ -155,15 +157,16 @@ const getAxisYDomain = (from, to, ref, offset) => {
 
 const initialState = {
   data,
-  left : 'dataMin',
-  right : 'dataMax',
-  refAreaLeft : '',
-  refAreaRight : '',
-  top : 'dataMax+1',
-  bottom : 'dataMin-1',
-  top2 : 'dataMax+20',
-  bottom2 : 'dataMin-20',
-  animation : true
+left : 'dataMin',
+right : 'dataMax',
+refAreaLeft : '',
+refAreaRight : '',
+top : 'dataMax+1',
+bottom : 'dataMin-1',
+top2 : 'dataMax+20',
+bottom2 : 'dataMin-20',
+animation : true,
+
 };
 var sessionIds = cookie.loadAll();
   console.log("yoo remove successfully"+JSON.stringify(sessionIds));
@@ -171,7 +174,12 @@ class Dashboard_3 extends React.Component {
 
 	constructor(props) {
     super(props);
-    this.state = initialState;
+    this.state = initialState, {
+    company:'',
+    users:'',
+    countsList:'',
+  }
+
   }
 
   zoom(){
@@ -217,9 +225,27 @@ class Dashboard_3 extends React.Component {
       bottom: 'dataMin+50'
     }) );
   }
+  // countsList = (params = {}) => {
+  //
+  // }
 
+  componentDidMount(){
+    var cookies = cookie.load('sessionid');
+  //  alert()
+    axios.get(axios.defaults.baseURL + '/dataexchange/api/front/dashboard/count/' + cookies ,{
+      responseType: 'json'
+    }).then(response => {
+    //  alert( response.data.result)
+    var counts = response.data.result;
+  //  alert(response.data.result)
+          this.setState({company: response.data.result.company,users: response.data.result.users, loading:false});
+      })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
   render() {
-    const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom, top2, bottom2 } = this.state;
+    const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom,users,company, countsList, top2, bottom2 } = this.state;
 
     return (
       <div className="dashboard-3">
@@ -231,7 +257,7 @@ class Dashboard_3 extends React.Component {
         <Col span={12}>
 
         <i className="fa fa-building-o fa-5x text-primary"></i></Col>
-       <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>10</span><br />
+       <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>{this.state.company}</span><br />
        <span className="text-primary" style={{ fontSize: 20 }}>No. of Companies </span>
 
        </Col>
@@ -242,7 +268,7 @@ class Dashboard_3 extends React.Component {
 
       <Card className="bleedblue" style={{ padding: '30px' }}>
         <Col span={12}><i className="fa fa-users fa-5x text-primary"></i></Col>
-      <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>20</span><br />
+      <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>{this.state.users}</span><br />
       <span style={{ fontSize: 20 }} className="text-primary">No. of Customers </span></Col>
       </Card>
       </Col>

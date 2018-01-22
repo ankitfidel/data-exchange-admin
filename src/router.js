@@ -40,7 +40,7 @@ export default function ({history, app}) {
             childRoutes: [
                 {
                     path: 'dashboard',
-                    name: 'dashboard',
+                    name: 'dashboard_3',
                     getComponent(nextState, cb) {
                         require.ensure([], require => {
                             cb(null, require('./routes/dashboard_3'))
