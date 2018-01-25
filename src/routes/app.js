@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'dva'
-import Login from './login'
+import Login from './loginpage'
 import Signup from './signup'
 import Adminlogin from './adminlogin'
 
@@ -20,18 +20,18 @@ import { BackTop } from 'antd';
 import moment from 'moment';
 //import 'moment/locale/en_US';
 import cookie from 'react-cookies'
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 
 
 const { Sider, Content } = Layout;
 var cookies = cookie.load('sessionid');
 var user_role = cookie.load('user_role');
-//alert(user_role)
+//alert(cookies)
 if(cookies==null || cookies == undefined ||cookies == ''){
-  browserHistory.push("/login");
+  hashHistory.push("/login");
 }else{
   if(user_role=='admin'){
-    browserHistory.push("/dashboard");
+    hashHistory.push("/dashboard");
   }
 }
 

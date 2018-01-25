@@ -6,7 +6,7 @@ const InputGroup = Input.Group;
 import reqwest from 'reqwest';
 import cookie from 'react-cookies'
 const axios = require('axios');
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -57,7 +57,7 @@ viewUsers(){
   var cookies = cookie.load('sessionid');
   var user_id = cookie.load('user_id');
   alert(user_id);
-  axios.get(axios.defaults.baseURL + '/dataexchange/api/front/user/'+ cookies + '/user_id/' + user_id,{
+  axios.get(axios.defaults.baseURL + '/api/front/user/'+ cookies + '/user_id/' + user_id,{
     responseType: 'json'
   }).then(response => {
     var userdata = response.data.result;
@@ -79,7 +79,7 @@ updateUsers(){
   const first_name = document.getElementById('first_name').value;
   const email_id = document.getElementById('email_id').value;
 
-  axios.put(axios.defaults.baseURL + '/dataexchange/api/front/user/'+user_id, {
+  axios.put(axios.defaults.baseURL + '/api/front/user/'+user_id, {
    session_id:cookies,
    username:username,
    password:password,
@@ -93,7 +93,7 @@ updateUsers(){
      error(response.data.result)
        }else{
       //   console.log(JSON.stringify(response.data.result));
-         browserHistory.push("/users");
+         hashHistory.push("/users");
        }
   })
   .catch(function (error) {

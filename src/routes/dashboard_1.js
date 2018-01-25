@@ -32,7 +32,7 @@ function Dashboard({dashboard, dispatch}) {
     quote_2,
     quote_3,
     numbers_2,
-    numbers_3,    
+    numbers_3,
     recentSales_2,
     recentSales_3,
     todo,
@@ -78,6 +78,7 @@ function Dashboard({dashboard, dispatch}) {
             </Col>
 
           </Row>
+          
         </Col>
         <Col lg={18} md={24}>
           <Card

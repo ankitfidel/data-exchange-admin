@@ -5,7 +5,7 @@ import styles from './login.less'
 import cookie from 'react-cookies'
 const axios = require('axios');
 const FormItem = Form.Item;
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -34,7 +34,7 @@ const signup = ({
 const username = document.getElementById('username').value;
 const password = document.getElementById('password').value;
 const emailId = document.getElementById('emailId').value;
-    axios.post(axios.defaults.baseURL + '/dataexchange/api/admin', {
+    axios.post(axios.defaults.baseURL + '/api/admin', {
       username:username,
   	  password:password,
       user_role_id:1,
@@ -43,7 +43,7 @@ const emailId = document.getElementById('emailId').value;
   .then(function (response) {
     if(response.data.status == true){
       success(response.data.result)
-    browserHistory.push("/login")
+    hashHistory.push("/login")
     }else{
     //  alert("result");
       alert(response.data.result)
@@ -65,6 +65,7 @@ const emailId = document.getElementById('emailId').value;
   return (
     <div className={styles.bg}>
     <div className={styles.form}>
+
       <div className={styles.logo}>
         <img src="../assets/login-logo.png" />
       </div>

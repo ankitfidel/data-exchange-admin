@@ -5,7 +5,7 @@ import {ComposedChart, CartesianGrid, LineChart, Line, AreaChart, Area, Brush, X
 const {Header, Content, Footer, Sider} = Layout;
 const axios = require('axios');
 import cookie from 'react-cookies'
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 // <Button type="danger"   onClick={this.start}
 //         disabled={!hasSelected}>Delete Company</Button>
@@ -69,19 +69,19 @@ class Users extends React.Component {
   // console.log("user_id:" + user_id)
    cookie.save('user_id', user_id);
    console.log("from cookies user_id:" + cookie.load('user_id'))
-   browserHistory.push("/viewusers")
+   hashHistory.push("/viewusers")
  }
  useraddressedit(user_id){
   // console.log("user_id:" + user_id)
    cookie.save('user_id', user_id);
    console.log("from cookies user_id:" + cookie.load('user_id'))
-   browserHistory.push("/useraddress")
+   hashHistory.push("/useraddress")
  }
   users = (params = {}) => {
     // console.log('params:', params);
     //  this.setState({ loading: true });
       var cookies = cookie.load('sessionid');
-      axios.get(axios.defaults.baseURL + '/dataexchange/api/front/user/' + cookies,{
+      axios.get(axios.defaults.baseURL + '/api/front/user/' + cookies,{
         responseType: 'json'
       }).then(response => {
             this.setState({ userslist: response.data.result});
@@ -111,21 +111,20 @@ class Users extends React.Component {
 }
 adduser() {
 //  alert()
- browserHistory.push("/adduser");
+ hashHistory.push("/adduser");
 }
 start(user_id) {
 this.setState({ loading: true });
 // ajax request after empty completing
 var cookies = cookie.load('sessionid');
-alert(user_id)
-axios.delete(axios.defaults.baseURL + '/dataexchange/api/front/user/'+ cookies +'/'+user_id, {
+
+axios.delete(axios.defaults.baseURL + '/api/front/user/'+ cookies +'/'+user_id, {
 user_id:user_id
 })
 .then(function (response) {
 if(response.data.status == false){
 error(response.data.result)
   }else{
-    alert(user_id)
  window.location.reload();
   }
 })

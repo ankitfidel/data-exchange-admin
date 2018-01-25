@@ -3,9 +3,9 @@ import { Icon, Badge,Avatar  } from 'antd'
 import { Link } from 'dva/router'
 import styles from './BadgeBox.less'
 import screenfull from 'screenfull';
-
+import { axiosrequest } from '../../routes/axiosrequest';
 const axios = require('axios');
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 
 import cookie from 'react-cookies'
 class BadgeBox extends React.Component {
@@ -25,18 +25,21 @@ class BadgeBox extends React.Component {
    var cookies = cookie.remove('sessionid');
    // const username = document.getElementById('username').value;
    // const password = document.getElementById('password').value;
- axios.post('http://localhost:8080/dataexchange/api/logout', {
+ axios.post(axios.defaults.baseURL + '/api/logout', {
       session_id:cookies,
   })
   .then(function (response) {
-   cookie.remove('sessionid');
-   browserHistory.push("/login");
+   cookie.remove('sessionid', { path: '/' });
+  // alert(cookies)
+  // hashHistory.push("/login");
+    window.location.href = ("#/login");
+  //window.location.reload()
   })
   .catch(function (error) {
     console.log(error);
   });
-     alert("Successfully Logout");
-   window.location.href='/login'
+  //   alert("Successfully Logout");
+  // window.location.href='/login'
 
  }
 render(){

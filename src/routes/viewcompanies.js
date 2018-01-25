@@ -6,7 +6,7 @@ const InputGroup = Input.Group;
 import reqwest from 'reqwest';
 import cookie from 'react-cookies'
 const axios = require('axios');
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -59,7 +59,7 @@ viewCompany(){
   var cookies = cookie.load('sessionid');
   var company_id = cookie.load('editCompanyId');
 //  alert(company_id);
-  axios.get(axios.defaults.baseURL + '/dataexchange/api/front/company/' + cookies +'/'+ company_id,{
+  axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies +'/'+ company_id,{
     responseType: 'json'
   }).then(response => {
     var companydata = response.data.result;
@@ -80,7 +80,7 @@ updateCompany(){
   const logo = document.getElementById('logo').value;
   const isRetailer = document.getElementById('isRetailer').checked;
 
-  axios.put(axios.defaults.baseURL + '/dataexchange/api/front/company/'+editCompanyId, {
+  axios.put(axios.defaults.baseURL + '/api/front/company/'+editCompanyId, {
    session_id:cookies,
    name:name,
    domain:domain,
@@ -94,7 +94,7 @@ updateCompany(){
      error(response.data.result)
        }else{
          console.log(JSON.stringify(response.data.result));
-         browserHistory.push("/companies");
+         hashHistory.push("/companies");
        }
   })
   .catch(function (error) {

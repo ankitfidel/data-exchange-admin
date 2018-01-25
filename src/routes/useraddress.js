@@ -6,7 +6,7 @@ import reqwest from 'reqwest';
 import styles from './common.less'
 const axios = require('axios');
 import cookie from 'react-cookies'
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -23,16 +23,16 @@ class UserAddress extends React.Component {
       super(props);
       this.state = {
         addressData: [{
-          addressLine1:'',
-          addressLine2:'',
+          address_line1:'',
+          address_line2:'',
           domain:'',
           city:'',
           state:'',
           country:'',
-          zipCode:'',
-          addressName:'',
+          zip_code:'',
+          address_name:'',
           user_id:'',
-          id:'',
+          addressId:'',
                }],
            pagination: {},
            data:[],
@@ -62,7 +62,7 @@ class UserAddress extends React.Component {
           var user_id = cookie.load('user_id');
           console.log("user_id:" + user_id)
 
-          axios.get(axios.defaults.baseURL + '/dataexchange/api/front/address/user/' + cookies + '/' + user_id,{
+          axios.get(axios.defaults.baseURL + '/api/front/address/user/' + cookies + '/' + user_id,{
             responseType: 'json'
           }).then(response => {
             console.log(response.data.result)
@@ -93,7 +93,7 @@ class UserAddress extends React.Component {
   }
       adduseraddress() {
       //  alert()
-       browserHistory.push("/adduseraddress");
+       hashHistory.push("/adduseraddress");
       }
       addressedit(id){
       //  console.log("company_id:" + company_id)
@@ -101,7 +101,7 @@ class UserAddress extends React.Component {
       //  cookie.save('company_id', company_id);
         cookie.save('id', id);
         console.log("from cookies zhgfj:" + cookie.load('id'))
-       browserHistory.push("/viewuseraddress")
+       hashHistory.push("/viewuseraddress")
       }
       // addaddress(user_id){
       //   alert(user_id)
@@ -173,13 +173,13 @@ const hasSelected = selectedRowKeys.length > 0;
 <Card noHovering="false">
 
 <Button type="primary" onClick={this.adduseraddress}>Add Address</Button> &nbsp; <br /><br />
- <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="id" rowSelection={rowSelection} columns={[
+ <Table locale={{'emptyText':"No data"}} pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="addressId" rowSelection={rowSelection} columns={[
   {
    title: 'address_line1',
-   dataIndex: 'addressLine1',
+   dataIndex: 'address_line1',
  }, {
    title: 'address_line2',
-   dataIndex: 'addressLine2',
+   dataIndex: 'address_line2',
  }, {
    title: 'city',
    dataIndex: 'city',
@@ -194,17 +194,17 @@ const hasSelected = selectedRowKeys.length > 0;
 },
 {
  title: 'zip_code',
- dataIndex: 'zipCode',
+ dataIndex: 'zip_code',
 },
 {
  title: 'address_name',
- dataIndex: 'addressName',
+ dataIndex: 'address_name',
 },
 
 {
   title: 'Action',
-  dataIndex: 'id',
-  render: id => <div> <a href="javascript:void(0)" onClick={() => this.addressedit(id)}><i className="fa fa-pencil" title="edit address" aria-hidden="true"></i></a> </div>
+  dataIndex: 'addressId',
+  render: addressId => <div> <a href="javascript:void(0)" onClick={() => this.addressedit(addressId)}><i className="fa fa-pencil" title="edit address" aria-hidden="true"></i></a> </div>
 }
 
 ]} dataSource={addressData}  />

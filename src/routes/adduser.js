@@ -10,7 +10,7 @@ const axios = require('axios');
 import cookie from 'react-cookies'
 import { axiosrequest } from './axiosrequest';
 
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 const data = [];
 
 
@@ -57,7 +57,7 @@ class Addusers extends React.Component {
      // console.log('params:', params);
      //  this.setState({ loading: true });
        var cookies = cookie.load('sessionid');
-       axios.get(axios.defaults.baseURL + '/dataexchange/api/front/company/' + cookies,{
+       axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies,{
          responseType: 'json'
        }) .then(response => {
           let comapnyrole = response.data.result.map((pic,i) => {
@@ -83,7 +83,7 @@ class Addusers extends React.Component {
        const companyId = document.getElementById('selectedCompanyId').value;
 //console.log(this.state.comapnyrole[4]);
     //   const isRetailer = document.getElementById('isRetailer').checked = true;
-        axios.post(axios.defaults.baseURL + '/dataexchange/api/front/user', {
+        axios.post(axios.defaults.baseURL + '/api/front/user', {
          session_id:cookies,
          username:username,
          password:password,
@@ -103,7 +103,7 @@ class Addusers extends React.Component {
             //  alert("user added")
             //  console.log(JSON.stringify(response.data.result));
             //  console.log(cookies);
-          browserHistory.push("/users");
+          hashHistory.push("/users");
          }
 
         })

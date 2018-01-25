@@ -6,10 +6,44 @@ import reqwest from 'reqwest';
 import styles from './common.less'
 const axios = require('axios');
 import cookie from 'react-cookies'
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
+const columnsAddress= [
+ {
+  title: 'address_line1',
+  dataIndex: 'address_line1',
+}, {
+  title: 'address_line2',
+  dataIndex: 'address_line2',
+}, {
+  title: 'city',
+  dataIndex: 'city',
+},
+{
+ title: 'state',
+ dataIndex: 'state'
+},
+{
+title: 'country',
+dataIndex: 'country',
+},
+{
+title: 'zip_code',
+dataIndex: 'zip_code',
+},
+{
+title: 'address_name',
+dataIndex: 'address_name',
+},
 
+{
+ title: 'Action',
+ dataIndex: 'id',
+ render: id => <div> <a href="javascript:void(0)" onClick={() => this.addressedit(id)}><i className="fa fa-address-card" title="edit address" aria-hidden="true"></i></a> </div>
+}
+
+]
 const data =[]
 // <Button type="danger"   onClick={this.start}
 //             disabled={!hasSelected}>Delete Company</Button>
@@ -23,20 +57,21 @@ class Address extends React.Component {
       super(props);
       this.state = {
         addressData: [{
-          addressLine1:'',
-          addressLine2:'',
+          address_line1:'',
+          address_line2:'',
           domain:'',
           city:'',
           state:'',
           country:'',
-          zipCode:'',
-          addressName:'',
+          zip_code:'',
+          address_name:'',
           company_id:'',
           id:'',
                }],
            pagination: {},
            data:[],
            result:[],
+
            loading: false,
 
            pagination: {},
@@ -55,14 +90,14 @@ class Address extends React.Component {
 
 
 
-      fetch = (params = {}) => {
+      fetch = () => {
         // console.log('params:', params);
         //  this.setState({ loading: true });
           var cookies = cookie.load('sessionid');
           var company_id = cookie.load('addresscompany');
           console.log("company_id:" + company_id)
 
-          axios.get(axios.defaults.baseURL + '/dataexchange/api/front/address/company/' + cookies + '/' + company_id,{
+          axios.get(axios.defaults.baseURL + '/api/front/address/company/' + cookies + '/' + company_id,{
             responseType: 'json'
           }).then(response => {
                 this.setState({ addressData: response.data.result});
@@ -92,7 +127,7 @@ class Address extends React.Component {
   }
       addaddress() {
       //  alert()
-       browserHistory.push("/addaddress");
+       hashHistory.push("/addaddress");
       }
       addressedit(id){
       //  console.log("company_id:" + company_id)
@@ -100,12 +135,12 @@ class Address extends React.Component {
       //  cookie.save('company_id', company_id);
         cookie.save('id', id);
         console.log("from cookies company_id:" + cookie.load('id'))
-        browserHistory.push("/viewaddress")
+        hashHistory.push("/viewaddress")
       }
       address(company_id){
-        alert(company_id)
+      //  alert(company_id)
       //  cookie.save('addresscompany', company_id);
-        browserHistory.push("/addaddress")
+        hashHistory.push("/addaddress")
       }
       start = () => {
    this.setState({ loading: true });
@@ -125,88 +160,55 @@ class Address extends React.Component {
 
 render(){
   const { selectedRowKeys, addressData, company_id } = this.state;
+
   const rowSelection = {
-       selectedRowKeys,
-       onChange: this.onSelectChange,
-       hideDefaultSelections: true,
-       selections: [{
-         key: 'all-data',
-         text: 'Select All Data',
-         onSelect: () => {
-           this.setState({
-             selectedRowKeys: [...Array(46).keys()], // 0...45
-           });
-         },
-       }, {
-         key: 'odd',
-         text: 'Select Odd Row',
-         onSelect: (changableRowKeys) => {
-           let newSelectedRowKeys = [];
-           newSelectedRowKeys = changableRowKeys.filter((key, index) => {
-             if (index % 2 !== 0) {
-               return false;
-             }
-             return true;
-           });
-           this.setState({ selectedRowKeys: newSelectedRowKeys });
-         },
-       }, {
-         key: 'even',
-         text: 'Select Even Row',
-         onSelect: (changableRowKeys) => {
-           let newSelectedRowKeys = [];
-           newSelectedRowKeys = changableRowKeys.filter((key, index) => {
-             if (index % 2 !== 0) {
-               return true;
-             }
+     selectedRowKeys,
+     onChange: this.onSelectChange,
+     hideDefaultSelections: true,
+     selections: [{
+       key: 'all-data',
+       text: 'Select All Data',
+       onSelect: () => {
+         this.setState({
+           selectedRowKeys: [...Array(46).keys()], // 0...45
+         });
+       },
+     }, {
+       key: 'odd',
+       text: 'Select Odd Row',
+       onSelect: (changableRowKeys) => {
+         let newSelectedRowKeys = [];
+         newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+           if (index % 2 !== 0) {
              return false;
-           });
-           this.setState({ selectedRowKeys: newSelectedRowKeys });
-         },
-       }],
-       onSelection: this.onSelection,
-     };
+           }
+           return true;
+         });
+         this.setState({ selectedRowKeys: newSelectedRowKeys });
+       },
+     }, {
+       key: 'even',
+       text: 'Select Even Row',
+       onSelect: (changableRowKeys) => {
+         let newSelectedRowKeys = [];
+         newSelectedRowKeys = changableRowKeys.filter((key, index) => {
+           if (index % 2 !== 0) {
+             return true;
+           }
+           return false;
+         });
+         this.setState({ selectedRowKeys: newSelectedRowKeys });
+       },
+     }],
+     onSelection: this.onSelection,
+   };
 const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
 <Card noHovering="false">
 
 <Button type="primary" onClick={this.addaddress}>Add Address</Button> &nbsp; <br /><br />
- <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="id" rowSelection={rowSelection} columns={[
-  {
-   title: 'address_line1',
-   dataIndex: 'addressLine1',
- }, {
-   title: 'address_line2',
-   dataIndex: 'addressLine2',
- }, {
-   title: 'city',
-   dataIndex: 'city',
- },
- {
-  title: 'state',
-  dataIndex: 'state'
-},
-{
- title: 'country',
- dataIndex: 'country',
-},
-{
- title: 'zip_code',
- dataIndex: 'zipCode',
-},
-{
- title: 'address_name',
- dataIndex: 'addressName',
-},
-
-{
-  title: 'Action',
-  dataIndex: 'id',
-  render: id => <div> <a href="javascript:void(0)" onClick={() => this.addressedit(id)}><i className="fa fa-address-card" title="edit address" aria-hidden="true"></i></a> </div>
-}
-
-]} dataSource={addressData}  />
+ <Table  pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="id" rowSelection={rowSelection} columns={columnsAddress} dataSource={addressData}  />
          </Card>
        </div>
      );

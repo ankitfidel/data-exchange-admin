@@ -232,7 +232,7 @@ class Dashboard_3 extends React.Component {
   componentDidMount(){
     var cookies = cookie.load('sessionid');
   //  alert()
-    axios.get(axios.defaults.baseURL + '/dataexchange/api/front/dashboard/count/' + cookies ,{
+    axios.get(axios.defaults.baseURL + '/api/front/dashboard/count/' + cookies ,{
       responseType: 'json'
     }).then(response => {
     //  alert( response.data.result)
@@ -269,7 +269,7 @@ class Dashboard_3 extends React.Component {
       <Card className="bleedblue" style={{ padding: '30px' }}>
         <Col span={12}><i className="fa fa-users fa-5x text-primary"></i></Col>
       <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>{this.state.users}</span><br />
-      <span style={{ fontSize: 20 }} className="text-primary">No. of Customers </span></Col>
+      <span style={{ fontSize: 20 }} className="text-primary">No. of Users </span></Col>
       </Card>
       </Col>
 

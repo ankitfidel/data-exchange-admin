@@ -1,12 +1,12 @@
 import {login, userInfo, logout} from '../services/app'
 import {parse} from 'qs'
-
+import createHistory from 'history/createBrowserHistory'
 console.log(localStorage.getItem('berrAdminSiderFoldRight') == null ? 'false': localStorage.getItem('berrAdminSiderFoldRight'));
 
 export default {
   namespace : 'app',
   state : {
-    login: true,
+    login: false,
     loading: false,
     lock:false,
     SignUp:false,
@@ -22,7 +22,6 @@ export default {
     isNavbar: document.body.clientWidth < 769,
     navOpenKeys: JSON.parse(localStorage.getItem('navOpenKeys') || '[]'), //The sidebar menu opens the keys
   },
-
 
 
   subscriptions : {

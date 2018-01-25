@@ -63,7 +63,7 @@ viewCompany(){
   var company_id = cookie.load('company_id');
   var id = cookie.load('id');
 
-  axios.get(axios.defaults.baseURL + '/dataexchange/api/front/address/'+ cookies +'/'+ id,{
+  axios.get(axios.defaults.baseURL + '/api/front/address/'+ cookies +'/'+ id,{
     responseType: 'json'
   }).then(response => {
     var companydata = response.data.result;
@@ -86,7 +86,7 @@ updateCompany(){
   const zip_code = document.getElementById('zip_code').value;
   const address_name = document.getElementById('address_name').value;
 console.log(cookies)
-  axios.put(axios.defaults.baseURL + '/dataexchange/api/front/address/'+id, {
+  axios.put(axios.defaults.baseURL + '/api/front/address/'+id, {
    session_id:cookies,
    address_line1:addressLine1,
    address_line2:address_line2,

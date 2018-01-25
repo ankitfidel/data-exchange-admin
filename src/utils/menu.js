@@ -1,86 +1,23 @@
 module.exports = [
-
     {
         key: 'dashboard',
         name: 'Dashboard',
         icon: 'laptop',
-    },
-
-    {
-       key: 'themes',
-       name: 'themes',
-       icon: 'exception',
-
-   },
-   {
-      key: 'companies',
-      name: 'Companies',
-      icon: 'profile',
-
-  }, {
-      key: 'customapi',
-      name: 'customapi',
-      icon: 'profile',
-
-  },
-  {
-     key: 'users',
-     name: 'Users',
-     icon: 'users',
-
- },
-    {
-       key: 'toggle',
-       name: 'Custom Page',
-       icon: 'exception',
-   },
-   {
-      key: 'hosts',
-      name: 'Hosts',
-      icon: 'cloud-o',
-  },
-  {
-     key: 'events',
-     name: 'Events',
-     icon: 'notification',
- },
- {
-    key: 'hostsgroup',
-    name: 'Hosts Group',
-    icon: 'database',
-},
-{
-   key: 'templates',
-   name: 'Templates',
-   icon: 'layout',
-},
-
-     {
-        key: 'table',
-        name: 'Table',
-        icon: 'exception',
         clickable: false,
         child: [
-
             {
-                key: 'basic',
-                name: 'Basic'
+                key: 'dashboard_1',
+                name: 'Dashboard v1'
             }, {
-                key: 'users',
-                name: 'User CRUD'
+                key: 'dashboard_2',
+                name: 'Dashboard v2'
             }, {
-                key: 'advancedTable',
-                name: 'Advanced Table'
-            }, {
-                key: 'ajaxTable',
-                name: 'Ajax Table'
-            }, {
-                key: 'table-playground',
-                name: 'Table Playground'
+                key: 'dashboard_3',
+                name: 'Dashboard v3'
             }
+
         ]
-    },
-    {
+    }, {
         key: 'layout',
         name: 'Layout',
         icon: 'appstore-o',
@@ -106,8 +43,7 @@ module.exports = [
                 name: 'Sidebar'
             }
         ]
-    },
-     {
+    }, {
         key: 'app',
         name: 'App',
         icon: 'mobile',
@@ -138,8 +74,7 @@ module.exports = [
                 name: 'Media Player'
             }
         ]
-    },
-     {
+    }, {
         key: 'ui',
         name: 'UI',
         icon: 'solution',
@@ -196,8 +131,7 @@ module.exports = [
                 name: 'Color Gradients'
             }
         ]
-    },
-     {
+    }, {
         key: 'script',
         name: 'Script',
         icon: 'rocket',
@@ -269,8 +203,7 @@ module.exports = [
                 name: 'Mention'
             }
         ]
-    },
-     {
+    }, {
         key: 'chart',
         name: 'Chart',
         icon: 'dot-chart',
@@ -288,8 +221,30 @@ module.exports = [
                 name: 'Charts 3'
             }
         ]
+    }, {
+        key: 'table',
+        name: 'Table',
+        icon: 'exception',
+        clickable: false,
+        child: [
+            {
+                key: 'basic',
+                name: 'Basic'
+            }, {
+                key: 'users',
+                name: 'User CRUD'
+            }, {
+                key: 'advancedTable',
+                name: 'Advanced Table'
+            }, {
+                key: 'ajaxTable',
+                name: 'Ajax Table'
+            }, {
+                key: 'table-playground',
+                name: 'Table Playground'
+            }
+        ]
     },
-
     {
         key: 'pages',
         name: 'Pages',
@@ -302,12 +257,10 @@ module.exports = [
             }, {
                 key: 'profile',
                 name: 'Profile'
-            },
-            {
-                        key: 'login-page',
-                        name: 'LOGIN'
-            },
-            {
+            }, {
+                key: 'login-page',
+                name: 'Login'
+            }, {
                 key: 'signup',
                 name: 'Sign Up'
             }, {
@@ -315,8 +268,7 @@ module.exports = [
                 name: 'Lock Screen'
             }
         ]
-    },
-     {
+    }, {
         key: 'form',
         name: 'Form',
         icon: 'edit',
@@ -334,8 +286,7 @@ module.exports = [
                 name: 'HTML Editor'
             }
         ]
-    },
-     {
+    }, {
         key: 'animation',
         name: 'Animation',
         icon: 'scan',
@@ -357,8 +308,7 @@ module.exports = [
                 name: 'Logo Motion'
             }
         ]
-    },
-     {
+    }, {
         key: 'navigation',
         name: 'Multilevel',
         icon: 'switcher',

@@ -2,6 +2,10 @@ import React, {PropTypes} from 'react'
 import { Button, Row, Form, Input } from 'antd'
 import { config } from '../utils'
 import styles from './login.less'
+import cookie from 'react-cookies'
+const axios = require('axios');
+import { browserHistory } from 'dva/router';
+import { axiosrequest } from './axiosrequest';
 
 const FormItem = Form.Item
 
@@ -14,15 +18,32 @@ const adminlogin = ({
   }
 }) => {
   function handleOks () {
-    validateFieldsAndScroll((errors, values) => {
-      if (errors) {
-        alert("errors are here")
-        return;
-      }
-      console.log("values:"+ JSON.stringify(values));
-      alert("admin here")
-      window.location.href='/dashboard_2'
-    })
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+        axios.post('http://localhost:8080/dataexchange/api/authenticate', {
+          credentials: 'credentials',
+          username:username,
+          password:password
+      })
+      .then(function (response) {
+        const sessionid = response.data.result.sessionId;
+        if(response.data.result.userRole!="admin"){
+            //browserHistory.push("/dashboard");
+            console.log("sessionid"+sessionid);
+            cookie.save('sessionid', sessionid, { path: '/' })
+          //  alert("userRole is not admin");
+        }else{
+          //  alert("userRole is admvfsvfvsghdvfhsin");
+            console.log("sessionid"+JSON.stringify(response.data.result));
+            cookie.save('sessionid', sessionid, { path: '/' })
+          //  browserHistory.push("/dashboard");
+        }
+
+      })
+      .catch(function (error) {
+        console.log(error);
+        alert("errors")
+      });
   }
 
   return (

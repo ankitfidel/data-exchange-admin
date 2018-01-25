@@ -63,12 +63,12 @@ viewCompany(){
   var company_id = cookie.load('company_id');
   var id = cookie.load('id');
 
-  axios.get(axios.defaults.baseURL + '/dataexchange/api/front/address/'+ cookies +'/'+ id,{
+  axios.get(axios.defaults.baseURL + '/api/front/address/'+ cookies +'/'+ id,{
     responseType: 'json'
   }).then(response => {
     var companydata = response.data.result;
     console.log( companydata)
-        this.setState({address_line1: companydata.addressLine1, country:companydata.country, address_line2:companydata.addressLine2,city:companydata.city, state:companydata.state,zip_code:companydata.zipCode, address_name:companydata.addressName});
+        this.setState({address_line1: companydata.address_line1, country:companydata.country, address_line2:companydata.address_line2,city:companydata.city, state:companydata.state,zip_code:companydata.zip_code, address_name:companydata.address_name});
     })
   .catch(function (error) {
     console.log(error);
@@ -86,7 +86,7 @@ updateCompany(){
   const zip_code = document.getElementById('zip_code').value;
   const address_name = document.getElementById('address_name').value;
 console.log(cookies)
-  axios.put(axios.defaults.baseURL + '/dataexchange/api/front/address/'+id, {
+  axios.put(axios.defaults.baseURL + '/api/front/address/'+id, {
    session_id:cookies,
    address_line1:addressLine1,
    address_line2:address_line2,

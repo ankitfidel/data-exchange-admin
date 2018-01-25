@@ -9,7 +9,7 @@ import { axiosrequest } from './axiosrequest';
 const axios = require('axios');
 import cookie from 'react-cookies'
 
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 const data = [];
 
 
@@ -71,7 +71,7 @@ class Addcompany extends React.Component {
        const logo = document.getElementById('logo').value;
        const isRetailer = document.getElementById('isRetailer').checked;
 
-       axios.post(axios.defaults.baseURL + '/dataexchange/api/front/company', {
+       axios.post(axios.defaults.baseURL + '/api/front/company', {
         session_id:cookies,
         name:name,
         domain:domain,
@@ -86,7 +86,7 @@ class Addcompany extends React.Component {
           error(response.data.result)
             }else{
               console.log(JSON.stringify(response.data.result));
-              browserHistory.push("/companies");
+              hashHistory.push("/companies");
             }
        })
        .catch(function (error) {

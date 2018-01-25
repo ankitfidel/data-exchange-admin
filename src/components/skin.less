@@ -1,19 +1,7 @@
 @import "./vars.less";
+
 //@import url('https://fonts.googleapis.com/css?family=Poppins');
-@font-face {
-       font-family: 'BebasNeue_Regular';
-       src: url('./fonts/BebasNeue_Regular.ttf') format('truetype');
-       font-weight: normal;
-       font-style: normal;
 
-   }
-   @font-face {
-          font-family: 'DIN_Next_regular';
-          src: url('./fonts/Linotype_DIN_Next_LT_Pro_Regular.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
-
-      }
 @green: #64ea91;
 @blue: #8fc9fb;
 @purple: #d897eb;
@@ -42,6 +30,12 @@
 
 
 :global {
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{background: transparent !important}
+  .ant-menu{color: #fff !important}
+  .ant-menu-item:active, .ant-menu-submenu-title:active{background: transparent !important}
+ .ant-menu-item > a{color: #fff !important}
+  .ant-calendar-range-picker-input{ width: 48%;}
+  .ant-menu-inline .ant-menu-item{font-size: 13px !important}
   .ant-table{font-size: 13px !important;}
   .selected{color: darken(#fc3d66, 1%) !important; font-weight: normal;}
   .ant-menu-dark .ant-menu-inline.ant-menu-sub{background: darken(#262b33, 2%)}
@@ -73,7 +67,7 @@
   }
   body {
     text-rendering: geometricPrecision;
-    font-size: 13px !important;
+    font-size: 14px;
   }
   .ant-fullcalendar-header .ant-select, .ant-fullcalendar-header .ant-button {
     margin-bottom: 10px;
@@ -168,7 +162,7 @@
    background-color: @sugar_plum !important;
    color: white;
  //  border-color: @sugar_plum !important;
-   .selected{color: lighten(@sugar_plum, 50%) !important; font-weight: normal; text-decoration: underline;}
+   .selected{color: darken(@sugar_plum, 50%) !important; font-weight: normal; text-decoration: underline;}
 
     a {
       color: @sugar_plum;
@@ -221,7 +215,7 @@
 .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @midnight_green; border-radius: 4px;
 &:hover{  background-color: rgba(17, 75, 95, 0.3) !important;}
 }
-    .selected{color: lighten(@midnight_green, 50%) !important; font-weight: normal;}
+    .selected{color: darken(@midnight_green, 50%) !important; font-weight: normal;}
     background-color: @midnight_green !important;
   //  color: white;
   //  border-color: @midnight_green !important;
@@ -276,7 +270,7 @@
    .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @arsenic; border-radius: 4px;
    &:hover{  background-color: rgba(64, 63, 76, 0.3) !important;}
    }
-   .selected{color: lighten(@arsenic, 50%) !important; font-weight: normal;}
+   .selected{color: darken(@arsenic, 50%) !important; font-weight: normal;}
     background-color: @arsenic !important;
   //  color: white;
   //  border-color: @arsenic !important;
@@ -329,7 +323,7 @@
     .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @brillant_azure; border-radius: 4px;
     &:hover{  background-color: rgba(49, 133, 252, 0.3) !important;}
     }
-    .selected{color: lighten(@brillant_azure, 50%) !important; font-weight: normal;}
+    .selected{color: darken(@brillant_azure, 50%) !important; font-weight: normal;}
      background-color: @brillant_azure !important;
    //  color: white;
    //  border-color: @arsenic !important;
@@ -381,7 +375,7 @@
     .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @portland_orange; border-radius: 4px;
     &:hover{  background-color: rgba(244, 96, 54, 0.3) !important;}
     }
-    .selected{color: lighten(@portland_orange, 50%) !important; font-weight: normal;}
+    .selected{color: darken(@portland_orange, 50%) !important; font-weight: normal;}
      background-color: @portland_orange !important;
    //  color: white;
    //  border-color: @arsenic !important;
@@ -434,7 +428,7 @@
     .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @jungle_green; border-radius: 4px;
     &:hover{  background-color: rgba(27, 153, 139, 0.3) !important;}
     }
-    .selected{color: lighten(@jungle_green, 50%) !important; font-weight: normal;}
+    .selected{color: darken(@jungle_green, 50%) !important; font-weight: normal;}
      background-color: @jungle_green !important;
    //  color: white;
    //  border-color: @arsenic !important;
@@ -487,7 +481,7 @@
       .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @desire; border-radius: 4px;
       &:hover{  background-color: rgba(232, 72, 85, 0.3) !important;}
       }
-      .selected{color: lighten(@desire, 50%) !important; font-weight: normal;}
+      .selected{color: darken(@desire, 50%) !important; font-weight: normal;}
        background-color: @desire !important;
      //  color: white;
      //  border-color: @arsenic !important;
@@ -540,7 +534,7 @@
    .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @stil_de_gran_yellow; border-radius: 4px;
    &:hover{  background-color: rgba(249, 220, 92, 0.3) !important;}
    }
-   .selected{color: lighten(@stil_de_gran_yellow, 50%) !important; font-weight: normal;}
+   .selected{color: darken(@stil_de_gran_yellow, 50%) !important; font-weight: normal;}
     background-color: @stil_de_gran_yellow !important;
   //  color: white;
   //  border-color: @arsenic !important;
@@ -593,7 +587,7 @@
       .bleedblue{background: rgba(17, 75, 95,0) !important;border: 1px solid @purple; border-radius: 4px;
       &:hover{  background-color: rgba(216, 151, 235, 0.3) !important;}
       }
-      .selected{color: lighten(@purple, 50%) !important; font-weight: normal;}
+      .selected{color: darken(@purple, 50%) !important; font-weight: normal;}
        background-color: @purple !important;
      //  color: white;
      //  border-color: @arsenic !important;

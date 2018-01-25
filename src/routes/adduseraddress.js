@@ -9,7 +9,7 @@ const axios = require('axios');
 import cookie from 'react-cookies'
 import { axiosrequest } from './axiosrequest';
 
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 const data = [];
 
 
@@ -73,7 +73,7 @@ class Adduseraddress extends React.Component {
        const zip_code = document.getElementById('zip_code').value;
        const address_name = document.getElementById('address_name').value;
 
-       axios.post(axios.defaults.baseURL + '/dataexchange/api/front/address/user', {
+       axios.post(axios.defaults.baseURL + '/api/front/address/user', {
         session_id:cookies,
         address_line1:address_line1,
         address_line2:address_line2,
@@ -90,7 +90,7 @@ class Adduseraddress extends React.Component {
           error(response.data.result)
             }else{
               console.log(JSON.stringify(response.data.result));
-              browserHistory.push("/useraddress");
+              hashHistory.push("/useraddress");
             }
        })
        .catch(function (error) {

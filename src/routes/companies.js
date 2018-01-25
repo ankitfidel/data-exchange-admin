@@ -6,7 +6,7 @@ import reqwest from 'reqwest';
 import styles from './common.less'
 const axios = require('axios');
 import cookie from 'react-cookies'
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -58,7 +58,7 @@ class Companies extends React.Component {
         // console.log('params:', params);
         //  this.setState({ loading: true });
           var cookies = cookie.load('sessionid');
-          axios.get(axios.defaults.baseURL + '/dataexchange/api/front/company/' + cookies,{
+          axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies,{
             responseType: 'json'
           }).then(response => {
                 this.setState({ tableData: response.data.result});
@@ -88,26 +88,25 @@ class Companies extends React.Component {
   }
       addcompany() {
       //  alert()
-       browserHistory.push("/addcompany");
+       hashHistory.push("/addcompany");
       }
       companyedit(company_id){
         console.log("company_id:" + company_id)
         cookie.save('editCompanyId', company_id);
         console.log("from cookies company_id:" + cookie.load('editCompanyId'))
-          browserHistory.push("/viewcompanies")
+          hashHistory.push("/viewcompanies")
 
       }
       address(company_id){
-        alert(company_id)
         cookie.save('addresscompany', company_id);
-        browserHistory.push("/address")
+        hashHistory.push("/address")
       }
       start(company_id) {
    this.setState({ loading: true });
    // ajax request after empty completing
    var cookies = cookie.load('sessionid');
-alert(company_id)
-   axios.delete(axios.defaults.baseURL + '/dataexchange/api/front/company/'+ cookies +'/'+company_id, {
+
+   axios.delete(axios.defaults.baseURL + '/api/front/company/'+ cookies +'/'+company_id, {
      company_id:company_id
    })
    .then(function (response) {
@@ -115,7 +114,6 @@ alert(company_id)
       //  alert()
       error(response.data.result)
         }else{
-          alert(company_id)
        //   console.log(JSON.stringify(response.data.result));
          // browserHistory.push("/users");
        window.location.reload();

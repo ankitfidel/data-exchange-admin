@@ -1,6 +1,5 @@
 import { create, remove, update, query } from '../services/users'
 import { parse } from 'qs'
-//import { Router } from 'react-router'
 
 export default {
 
@@ -22,12 +21,9 @@ export default {
   },
 
   subscriptions: {
-
     setup ({ dispatch, history }) {
-//const pathname = pathnameInHistory;
       history.listen(location => {
         if (location.pathname === '/table/users') {
-          //if ( !== pathnameInStore || searchInHistory !== searchInStore || hashInHistory !== hashInStore) {
           dispatch({
             type: 'query',
             payload: location.query
