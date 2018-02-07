@@ -1,13 +1,17 @@
 import React from 'react'
-import { Icon, Badge,Avatar  } from 'antd'
+import { Icon, Badge,Avatar, Menu  } from 'antd'
 import { Link } from 'dva/router'
 import styles from './BadgeBox.less'
+const SubMenu = Menu.SubMenu;
+const MenuItemGroup = Menu.ItemGroup;
 import screenfull from 'screenfull';
 import { axiosrequest } from '../../routes/axiosrequest';
 const axios = require('axios');
 import { browserHistory, hashHistory } from 'dva/router';
 
 import cookie from 'react-cookies'
+
+var username = cookie.load('username');
 class BadgeBox extends React.Component {
 
    constructor(props) {
@@ -42,19 +46,24 @@ class BadgeBox extends React.Component {
   // window.location.href='/login'
 
  }
+ profile(){
+   hashHistory.push("/profile");
+ }
 render(){
   return (
  <div className={styles.badgeBox} style={{ float: 'right','marginLeft':'50px'  }}>
 
+ <Menu mode="horizontal" style={{'background':'#fc3d66', 'zIndex': 999}}>
 
-     <Link onClick={this.fullScreen} className={styles.badge}>
+         <Menu.Item onClick={this.fullScreen}  className={styles.badge}><Icon style={{ 'color':'white'}} type="arrows-alt" title="Full Screen" className={styles.size}/></Menu.Item>
 
-          <Icon type="arrows-alt" className={styles.size}/>
+        <SubMenu  title={<p style={{'textTransform': 'none','color':'white'}}><Icon type="user" /><span style={{'textOverflow':'ellipsis'}}>{username} </span><Icon style={{'float': 'right','margin':'15px 20px 0 10px'}} type="down" /></p>}>
+          <Menu.Item><a onClick={this.profile} className={styles.logoutbtn}>Profile</a></Menu.Item>
+            <Menu.Item><a onClick={this.loggout} className={styles.logoutbtn}>Logout</a></Menu.Item>
 
-      </Link>
-      <Link onClick={this.loggout} className={styles.badge}>
-        <Icon type="logout" title="Logout" className={styles.size}/>
-       </Link>
+        </SubMenu>
+        </Menu>
+
     </div>
 
   )

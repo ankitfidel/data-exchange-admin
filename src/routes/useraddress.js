@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Pagination } from 'antd'
+import {Menu, Icon, Popover, Badge, Breadcrumb, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Pagination } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 import reqwest from 'reqwest';
@@ -38,7 +38,7 @@ class UserAddress extends React.Component {
            data:[],
            result:[],
            loading: false,
-
+           user:'',
            pagination: {},
            size: 'default',
            selectedRowKeys: [],
@@ -61,6 +61,17 @@ class UserAddress extends React.Component {
           var cookies = cookie.load('sessionid');
           var user_id = cookie.load('user_id');
           console.log("user_id:" + user_id)
+
+          axios.get(axios.defaults.baseURL + '/api/front/user/' + cookies + '/user_id/' + user_id,{
+            responseType: 'json'
+          }).then(response => {
+            console.log(response.data.result)
+          //  alert(response.data.result)
+                this.setState({ user: response.data.result.first_name  });
+            })
+          .catch(function (error) {
+            console.log(error);
+          });
 
           axios.get(axios.defaults.baseURL + '/api/front/address/user/' + cookies + '/' + user_id,{
             responseType: 'json'
@@ -95,12 +106,13 @@ class UserAddress extends React.Component {
       //  alert()
        hashHistory.push("/adduseraddress");
       }
-      addressedit(id){
+      addressedit(addressId){
       //  console.log("company_id:" + company_id)
       //  var company_id = cookie.load('addresscompany');
       //  cookie.save('company_id', company_id);
-        cookie.save('id', id);
-        console.log("from cookies zhgfj:" + cookie.load('id'))
+        cookie.save('id', addressId);
+      //  alert(addressId)
+    //    console.log("from cookies zhgfj:" + cookie.load('id'))
        hashHistory.push("/viewuseraddress")
       }
       // addaddress(user_id){
@@ -125,7 +137,7 @@ class UserAddress extends React.Component {
         }
 
 render(){
-  const { selectedRowKeys, addressData, user_id } = this.state;
+  const { selectedRowKeys, addressData, user_id ,user} = this.state;
   const rowSelection = {
        selectedRowKeys,
        onChange: this.onSelectChange,
@@ -170,34 +182,38 @@ render(){
 const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users"> User: {this.state.user} </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Card noHovering="false">
 
 <Button type="primary" onClick={this.adduseraddress}>Add Address</Button> &nbsp; <br /><br />
- <Table locale={{'emptyText':"No data"}} pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="addressId" rowSelection={rowSelection} columns={[
+ <Table locale={{'emptyText':"No data"}} pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="addressId"  columns={[
   {
-   title: 'address_line1',
+   title: 'Address Line 1',
    dataIndex: 'address_line1',
  }, {
-   title: 'address_line2',
+   title: 'Address Line 2',
    dataIndex: 'address_line2',
  }, {
-   title: 'city',
+   title: 'City',
    dataIndex: 'city',
  },
  {
-  title: 'state',
+  title: 'State',
   dataIndex: 'state'
 },
 {
- title: 'country',
+ title: 'Country',
  dataIndex: 'country',
 },
 {
- title: 'zip_code',
+ title: 'Zip Code',
  dataIndex: 'zip_code',
 },
 {
- title: 'address_name',
+ title: 'Address Name',
  dataIndex: 'address_name',
 },
 

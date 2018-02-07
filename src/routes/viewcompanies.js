@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
+import {Menu, Icon, Popover, Badge, M,Avatar,Row, Breadcrumb, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
@@ -45,6 +45,7 @@ this.onTodoChange_isRetailer = this.onTodoChange_isRetailer.bind(this)
        showHeader:true,
        footer:true,
        rowSelection: true,
+       company_name:'',
        scroll: true,
        selectedRowKeys: [],
 companyName:'',
@@ -59,6 +60,17 @@ viewCompany(){
   var cookies = cookie.load('sessionid');
   var company_id = cookie.load('editCompanyId');
 //  alert(company_id);
+axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies + '/' + company_id,{
+  responseType: 'json'
+}).then(response => {
+
+    //  alert(response.data.result)
+      this.setState({ company_name: response.data.result.name});
+  })
+.catch(function (error) {
+  console.log(error);
+});
+
   axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies +'/'+ company_id,{
     responseType: 'json'
   }).then(response => {
@@ -127,14 +139,19 @@ onTodoChange_domain(value){
   console.log(event);
   this.setState({is_retailer: event})
   }
-
+  cancel(){
+     hashHistory.push("/companies");
+  }
 
 render(){
-  var { selectedRowKeys, companyName, domain, website_url, support_email_id,logo,isRetailer } = this.state;
+  var { selectedRowKeys, companyName, domain,company_name, website_url, support_email_id,logo,isRetailer } = this.state;
 
      return (
        <div>
-
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company: {this.state.company_name} </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 <Card noHovering="false">
@@ -164,7 +181,7 @@ render(){
 
 
           <Button type="primary" onClick={this.updateCompany}>Update</Button> &nbsp; &nbsp;
-          <Button>Cancel</Button>
+          <Button  onClick={this.cancel}>Back</Button>
 
 
  </Card>

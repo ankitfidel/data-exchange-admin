@@ -101,15 +101,15 @@ export default function ({ app}) {
               //         })
               //     }
               // },
-              // {
-              //     path: 'profile',
-              //     name: 'profile',
-              //     getComponent(nextState, cb) {
-              //         require.ensure([], require => {
-              //             cb(null, require('./routes/profile'))
-              //         })
-              //     }
-              // },
+              {
+                  path: 'profile',
+                  name: 'profile',
+                  getComponent(nextState, cb) {
+                      require.ensure([], require => {
+                          cb(null, require('./routes/profile'))
+                      })
+                  }
+              },
               {
                   path: 'users',
                   name: 'users',

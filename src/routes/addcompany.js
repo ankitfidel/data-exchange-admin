@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
+import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Breadcrumb, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
@@ -101,7 +101,10 @@ render(){
   const { selectedRowKeys } = this.state;
      return (
        <div>
-
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies"> Company </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 
@@ -112,16 +115,16 @@ render(){
     <Input placeholder="Enter name" defaultValue="" id="name"/>
 </FormItem>
 <FormItem label="Domain:">
-    <Input placeholder="Enter domain" defaultValue="" id="domain"/>
+    <Input placeholder="Enter Domain" defaultValue="" id="domain"/>
 </FormItem>
 <FormItem label="Support Email Id:">
-    <Input placeholder="Enter supportEmailId" defaultValue="" id="supportEmailId"/>
+    <Input placeholder="Enter Support Email Id" defaultValue="" id="supportEmailId"/>
 </FormItem>
 <FormItem label="Website Url:">
-    <Input placeholder="Enter websiteUrl" defaultValue="" id="websiteUrl"/>
+    <Input placeholder="Enter Website Url" defaultValue="" id="websiteUrl"/>
 </FormItem>
 <FormItem label="Logo:">
-    <Input placeholder="Enter logo Url" defaultValue="" id="logo"/>
+    <Input placeholder="Enter Logo Url" defaultValue="" id="logo"/>
 </FormItem>
 <FormItem>
     <label>   <input type="checkbox" id="isRetailer" value="is Retailer" /> is Retailer</label>

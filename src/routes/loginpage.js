@@ -73,6 +73,10 @@ class Loginpage extends React.Component {
            const sessionid = response.data.result.session_id;
            const company_id = response.data.result.company_id;
            const user_role = response.data.result.user_role;
+           const company_name = response.data.result.company_name;
+           const email_id = response.data.result.email_id;
+           const username = response.data.result.username;
+           const user_id = response.data.result.user_id;
          //   const sidebarcolor = response.data.result.theme.sidebar_color_class;
          // const headercolor =  response.data.result.theme.header_color_class;
          //   const content1 =  response.data.result.theme.content_1;
@@ -92,6 +96,12 @@ class Loginpage extends React.Component {
           console.log("sessionid"+sessionid);
           cookie.save('sessionid', sessionid, { path: '/' });
           cookie.save('user_role', user_role, { path: '/' })
+          cookie.save('company_name', company_name, { path: '/' })
+          cookie.save('email_id', email_id, { path: '/' })
+       //   cookie.save('theme', theme, { path: '/' })
+        
+          cookie.save('username', response.data.result.username, { path: '/' })
+          cookie.save('user_id', response.data.result.user_id, { path: '/' })
            hashHistory.push("/dashboard");
           console.log(JSON.stringify(response));
            }

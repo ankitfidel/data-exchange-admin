@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Pagination } from 'antd'
+import {Menu, Icon, Popover,message, Badge, M,Avatar,Row, Breadcrumb,  Col, Button,Card, Table, Modal, Switch, Radio,Popconfirm, Form, Pagination } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 import reqwest from 'reqwest';
@@ -16,7 +16,10 @@ const data =[]
 //             <span style={{ marginLeft: 8 }}>
 //             {hasSelected ? `Selected ${selectedRowKeys.length} Companies` : ''}
 //           </span>
-
+function cancel(e) {
+  console.log(e);
+  message.info('Company not deleted');
+}
 class Companies extends React.Component {
 
   constructor(props) {
@@ -189,10 +192,13 @@ render(){
 const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard  </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Card noHovering="false">
 
 <Button type="primary" onClick={this.addcompany}>Add Company</Button> &nbsp; <br /><br />
- <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="company_id" rowSelection={rowSelection} columns={[
+ <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="company_id" columns={[
    {
      title: 'Logo',
      dataIndex: 'logo',
@@ -222,15 +228,10 @@ const hasSelected = selectedRowKeys.length > 0;
   title: 'Action',
 
   dataIndex: 'company_id',
-  render: company_id => <div> <Popover
-        content={<div><br /><p>Do you want to delete this Company? </p> <br /><Button type="danger" onClick={() => this.start(company_id)}>Delete</Button> &nbsp; &nbsp; <Button type="default" onClick={this.canceldel}>cancel</Button></div> }
-
-        trigger="click"
-        visible={this.state.popover}
-        onVisibleChange={this.handleVisibleChange}
-      >
-       <a href="javascript:void(0)"><Icon title="Delete company" type="delete" /></a>
-      </Popover> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.companyedit(company_id)}><i className="fa fa-pencil" title="Edit Company" aria-hidden="true"></i></a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="javascript:void(0)" onClick={() => this.address(company_id)}><i className="fa fa-address-card" title="View address" aria-hidden="true"></i></a></div>
+  render: company_id => <div> <Popconfirm title="Are you sure delete this company?" onConfirm={() => this.start(company_id)} onCancel={cancel} okText="Yes" cancelText="No">
+    <a href="#"><Icon type="delete" /> &nbsp;Delete company</a>
+  </Popconfirm>
+&nbsp;&nbsp;|&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.companyedit(company_id)}><i className="fa fa-pencil" title="Edit Company" aria-hidden="true"></i>&nbsp; Edit</a> &nbsp;&nbsp;| &nbsp;&nbsp;<a href="javascript:void(0)" onClick={() => this.address(company_id)}><i className="fa fa-address-card" title="View address" aria-hidden="true"></i>&nbsp; Address</a></div>
 }
 
 ]} dataSource={tableData}  />

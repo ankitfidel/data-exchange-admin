@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover,Layout, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Input, Popconfirm} from 'antd'
+import {Menu, Icon, Popover,Layout, Badge,message,Breadcrumb, M,Avatar,Row, Col,Popconfirm, Button,Card, Table, Modal, Input} from 'antd'
 import {ComposedChart, CartesianGrid, LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis,Legend, Bar, Tooltip, ResponsiveContainer} from 'recharts';
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const {Header, Content, Footer, Sider} = Layout;
@@ -12,7 +12,10 @@ import { axiosrequest } from './axiosrequest';
 //         <span style={{ marginLeft: 8 }}>
 //         {hasSelected ? `Selected ${selectedRowKeys.length} Companies` : ''}
 //       </span>
-
+function cancel(e) {
+  console.log(e);
+  message.info('User not deleted');
+}
 const data = []
 for (let i = 0; i < 100; i++) {
   data.push({
@@ -218,10 +221,13 @@ render(){
 //const hasSelected = selectedRowKeys.length > 0;
   return (
     <div>
+    <Breadcrumb>
+       <Breadcrumb.Item><a href="#/dashboard">Dashboard  </a></Breadcrumb.Item>
+     </Breadcrumb><br />
  <Card noHovering="false">
 
- <Button type="primary" onClick={this.adduser}>Add Users</Button> <br /><br />
- <Table pagination={{ pageSize: 10,  showSizeChanger:true }} scroll={{ x: 768 }} rowKey="user_id" rowSelection={rowSelection} columns={[
+ <Button type="primary" onClick={this.adduser}>Add User</Button> <br /><br />
+ <Table pagination={{ pageSize: 10,  showSizeChanger:true }} scroll={{ x: 768 }} rowKey="user_id" columns={[
  {
  title: 'Username',
  dataIndex: 'username',
@@ -242,9 +248,11 @@ title: 'Email Id',
 dataIndex: 'email_id'
 },
 {
-title: 'edit',
+title: 'Action',
 dataIndex: 'user_id',
-render: user_id => <div> <a href="javascript:void(0)" onClick={() => this.start(user_id)}> <Icon title="Delete User" type="delete" /> </a>&nbsp;&nbsp;|&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.useredit(user_id)}>Edit</a> | <a href="javascript:void(0)" onClick={() => this.useraddressedit(user_id)}>Edit Address</a> </div>
+render: user_id => <div>  <Popconfirm title="Are you sure delete this user?" onConfirm={() => this.start(user_id)} onCancel={cancel} okText="Yes" cancelText="No">
+  <a href="#"><Icon type="delete" /> &nbsp;Delete user</a>
+</Popconfirm> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.useredit(user_id)}><i className="fa fa-pencil"></i>&nbsp; Edit</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.useraddressedit(user_id)}> <i className="fa fa-address-card" title="View address" aria-hidden="true"></i>&nbsp; Address</a> </div>
 }
  ]} dataSource={userslist}  />
       </Card>

@@ -1,12 +1,12 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
+import {Menu, Icon, Popover, Badge,Breadcrumb, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
 import reqwest from 'reqwest';
 import cookie from 'react-cookies'
 const axios = require('axios');
-import { browserHistory } from 'dva/router';
+import { browserHistory, hashHistory } from 'dva/router';
 import { axiosrequest } from './axiosrequest';
 
 
@@ -136,13 +136,18 @@ onTodoChange_address_line2(value){
   onTodoChange_address_name(value){
       this.setState({address_name: value});
   }
-
+  cancel(){
+     hashHistory.push("/useraddress");
+  }
 render(){
   var { selectedRowKeys, address_line1, address_line2, city, state,country,address_name,zip_code } = this.state;
 
      return (
        <div>
-
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users"> User: {this.state.user} </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 <Card noHovering="false">
@@ -173,7 +178,7 @@ render(){
 
 
           <Button type="primary" onClick={this.updateCompany}>Update</Button> &nbsp; &nbsp;
-          <Button>Cancel</Button>
+          <Button onClick={this.cancel}>Back</Button>
 
 
  </Card>

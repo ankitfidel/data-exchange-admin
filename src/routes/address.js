@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Pagination } from 'antd'
+import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col,Breadcrumb, Button,Card, Table, Modal, Switch, Radio, Form, Pagination } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 import reqwest from 'reqwest';
@@ -11,29 +11,29 @@ import { axiosrequest } from './axiosrequest';
 
 const columnsAddress= [
  {
-  title: 'address_line1',
+  title: 'Address Line 1',
   dataIndex: 'address_line1',
 }, {
-  title: 'address_line2',
+  title: 'Address Line 2',
   dataIndex: 'address_line2',
 }, {
-  title: 'city',
+  title: 'City',
   dataIndex: 'city',
 },
 {
- title: 'state',
+ title: 'State',
  dataIndex: 'state'
 },
 {
-title: 'country',
+title: 'Country',
 dataIndex: 'country',
 },
 {
-title: 'zip_code',
+title: 'Zip Code',
 dataIndex: 'zip_code',
 },
 {
-title: 'address_name',
+title: 'Address Name',
 dataIndex: 'address_name',
 },
 
@@ -51,6 +51,7 @@ const data =[]
 //             {hasSelected ? `Selected ${selectedRowKeys.length} Companies` : ''}
 //           </span>
 
+  var addresscompany = cookie.load("addresscompany")
 class Address extends React.Component {
 
   constructor(props) {
@@ -70,6 +71,8 @@ class Address extends React.Component {
                }],
            pagination: {},
            data:[],
+           addresscompany:'',
+           company_name:'',
            result:[],
 
            loading: false,
@@ -97,10 +100,22 @@ class Address extends React.Component {
           var company_id = cookie.load('addresscompany');
           console.log("company_id:" + company_id)
 
+          axios.get(axios.defaults.baseURL + '/api/front/company/' + cookies + '/' + company_id,{
+            responseType: 'json'
+          }).then(response => {
+
+              //  alert(response.data.result)
+                this.setState({ company_name: response.data.result.name});
+            })
+          .catch(function (error) {
+            console.log(error);
+          });
+
           axios.get(axios.defaults.baseURL + '/api/front/address/company/' + cookies + '/' + company_id,{
             responseType: 'json'
           }).then(response => {
                 this.setState({ addressData: response.data.result});
+            //    alert(response.data.result)
             })
           .catch(function (error) {
             console.log(error);
@@ -157,9 +172,8 @@ class Address extends React.Component {
           this.setState({ selectedRowKeys });
     //  alert();
         }
-
 render(){
-  const { selectedRowKeys, addressData, company_id } = this.state;
+  const { selectedRowKeys, addressData,addresscompany, company_id } = this.state;
 
   const rowSelection = {
      selectedRowKeys,
@@ -205,10 +219,14 @@ render(){
 const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company: {this.state.company_name} </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Card noHovering="false">
 
 <Button type="primary" onClick={this.addaddress}>Add Address</Button> &nbsp; <br /><br />
- <Table  pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="id" rowSelection={rowSelection} columns={columnsAddress} dataSource={addressData}  />
+ <Table  pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="id" columns={columnsAddress} dataSource={addressData}  />
          </Card>
        </div>
      );

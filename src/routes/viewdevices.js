@@ -139,7 +139,7 @@ class Viewdevices extends React.Component {
          }
          if(response.data.status == true){
                console.log(JSON.stringify(response.data.result));
-               hashHistory.push("/devices");
+               hashHistory.push("#/devices");
              }
         })
         .catch(function (error) {
@@ -191,7 +191,7 @@ render(){
 
        <FormItem>
           <Button type="primary" onClick={this.updatedevices}>Save</Button> &nbsp; &nbsp;
-          <Button onClick={this.cancelDevices}>Cancel</Button>
+          <Button onClick={this.cancelDevices}>Back</Button>
        </FormItem>
 
  </Card>

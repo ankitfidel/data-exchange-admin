@@ -31,7 +31,7 @@ if(cookies==null || cookies == undefined ||cookies == ''){
   hashHistory.push("/login");
 }else{
   if(user_role=='admin'){
-    hashHistory.push("/dashboard");
+  //  hashHistory.push("/dashboard");
   }
 }
 

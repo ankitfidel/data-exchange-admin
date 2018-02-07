@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
+import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Breadcrumb, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
@@ -97,44 +97,49 @@ class Addaddress extends React.Component {
 
 
      }
-
+     cancel(){
+        hashHistory.push("/useraddress");
+     }
 
 render(){
   const { selectedRowKeys } = this.state;
      return (
        <div>
-
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/address"> Address </a></Breadcrumb.Item>
+        </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 
 <Card noHovering="false">
-<h2 style={{textAlign: 'center'}}>Add Company</h2>
+<h2 style={{textAlign: 'center'}}>Add Address</h2>
 <Form>
-<FormItem label="address_line1:">
-    <Input placeholder="Enter name" defaultValue="" id="address_line1"/>
+<FormItem label="Address Line 1:">
+    <Input placeholder="Enter Address Line1" defaultValue="" id="address_line1"/>
 </FormItem>
-<FormItem label="address_line2:">
-    <Input placeholder="Enter address_line2" defaultValue="" id="address_line2"/>
+<FormItem label="Address Line 2:">
+    <Input placeholder="Enter Address Line 2" defaultValue="" id="address_line2"/>
 </FormItem>
-<FormItem label="city:">
-    <Input placeholder="Enter city" defaultValue="" id="city"/>
+<FormItem label="City:">
+    <Input placeholder="Enter City" defaultValue="" id="city"/>
 </FormItem>
-<FormItem label="state:">
-    <Input placeholder="Enter state" defaultValue="" id="state"/>
+<FormItem label="State:">
+    <Input placeholder="Enter State" defaultValue="" id="state"/>
 </FormItem>
-<FormItem label="country:">
-    <Input placeholder="Enter country" defaultValue="" id="country"/>
+<FormItem label="Country:">
+    <Input placeholder="Enter Country" defaultValue="" id="country"/>
 </FormItem>
-<FormItem label="zip_code:">
-    <Input placeholder="Enter zip_code" defaultValue="" id="zip_code"/>
+<FormItem label="Zip Code:">
+    <Input placeholder="Enter Zip Code" defaultValue="" id="zip_code"/>
 </FormItem>
-<FormItem label="address_name:">
-    <Input placeholder="Enter address_name" defaultValue="" id="address_name"/>
+<FormItem label="Address Name:">
+    <Input placeholder="Enter Address Name" defaultValue="" id="address_name"/>
 </FormItem>
 
        <FormItem>
           <Button type="primary" onClick={this.addaddress}>Save</Button> &nbsp; &nbsp;
-          <Button>Cancel</Button>
+          <Button onClick={this.cancel}>Back</Button>
        </FormItem>
 </Form>
  </Card>

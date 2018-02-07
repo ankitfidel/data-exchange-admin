@@ -4,15 +4,17 @@ import {ComposedChart, CartesianGrid, LineChart, Line, AreaChart, Area, Brush, X
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const {Header, Content, Footer, Sider} = Layout;
 import colors from '../utils/theme'
-
+import './pages/profile.less'
 import RightSider from '../components/layout/rightSider';
+
+import cookie from 'react-cookies'
 const style={
     profileHeader:{
-         background: 'url(./assets/2.jpg) no-repeat',
-
+         background: 'url(./assets/login-logo.png) no-repeat',
+backgroundPosition: 'center',
         width: '100%',
-        backgroundSize: 'cover',
-        height: '250px',
+        backgroundSize: 'contain',
+        height: '80px',
     }
 }
 class Profile extends React.Component {
@@ -38,58 +40,40 @@ class Profile extends React.Component {
 
    componentDidMount() {
   //   this.UserList();
-  fetch("https://randomuser.me/api/?results=10")
-  .then(results =>{
-    return results.json();
-  }).then(data => {
 
-    let profile = data.results.map((pic,i,demo) => {
-    //const jsObj = [];
-
-// for (var i = 1; i <= 12; i++) {
-//     jsObj['key' + i] = 'example ' + 1;
-// }
- //const val= Object.values(pic)[0];
-      return(
-
-  <div className="profile" key={i.toString()}>
-
-      <div className="" style={style.profileHeader}><img style={{width: '100%',objectFit: 'cover',objectPosition: '50% 50%',height: '100%' }}src={pic.picture.large} /></div>
-      <div className="profileInfo">
-        <div>
-          <p>Name: {pic.name.first} &nbsp;{pic.name.last}</p>
-          </div>
-        <div>
-          <p><span>Dashboard Username:</span>&nbsp; &nbsp; {pic.login.username}</p>
-          <p><span>dashboard Password:</span>&nbsp; &nbsp; {pic.login.password}</p>
-          <p><b>{pic.email}</b></p>
-          <p><b>{pic.phone}</b></p>
-        </div>
-          <div>
-        </div>
-      </div>
-  </div>
-      )
-    });
-
-      this.setState({profile:profile});
-      console.log("state:", this.state.profile)
-  })
 
    }
 render(){
-
+  var email_id = cookie.load('email_id');
+  var company_name = cookie.load('company_name');
+  var sidebarcolor = cookie.load('sidebarcolor');
+  var headercolor = cookie.load('headercolor');
+  var content1 = cookie.load('content1');
+  var content2 = cookie.load('content2');
+var username = cookie.load('username');
+var user_id = cookie.load('user_id');
 
   return (
 <div>
-<Row gutter={24}>
-    <Col  span={12} offset={6} className="infoCol" key="key12">
-      {this.state.profile}
-    </Col>
+<div className="profile-page">
+    <Row gutter={24}>
+        <Col xs={{span: 12, offset: 6}} md={{span: 12, offset: 6}} lg={{span: 8, offset: 8}} className="infoCol">
+            <div className="profile">
+                <div className="profile-header" style={style.profileHeader}>
+
+                </div>
+                <div className="profileInfo">
+                    <h1 style={{'fontSize': '1.5em', 'textTransform':'capitalize'}}>{username}</h1>
+                    <p style={{'textTransform':'none'}}>{email_id}</p>
+                      <p style={{'textTransform':'none'}}>{company_name === true ? "" : "company_name"}</p>
 
 
-</Row>
-</div>
+                </div>
+            </div>
+        </Col>
+
+    </Row>
+</div></div>
   )
 }
 
