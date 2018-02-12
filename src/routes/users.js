@@ -71,13 +71,13 @@ class Users extends React.Component {
  useredit(user_id){
   // console.log("user_id:" + user_id)
    cookie.save('user_id', user_id);
-   console.log("from cookies user_id:" + cookie.load('user_id'))
+  // console.log("from cookies user_id:" + cookie.load('user_id'))
    hashHistory.push("/viewusers")
  }
  useraddressedit(user_id){
   // console.log("user_id:" + user_id)
    cookie.save('user_id', user_id);
-   console.log("from cookies user_id:" + cookie.load('user_id'))
+  // console.log("from cookies user_id:" + cookie.load('user_id'))
    hashHistory.push("/useraddress")
  }
   users = (params = {}) => {
@@ -176,6 +176,7 @@ this.setState({
    }
  }
 render(){
+  document.title = "Users";
   const { selectedRowKeys, userslist, user_id } = this.state;
   const rowSelection = {
        selectedRowKeys,
@@ -222,7 +223,8 @@ render(){
   return (
     <div>
     <Breadcrumb>
-       <Breadcrumb.Item><a href="#/dashboard">Dashboard  </a></Breadcrumb.Item>
+       <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+       <Breadcrumb.Item><a href="#/users">Users</a></Breadcrumb.Item>
      </Breadcrumb><br />
  <Card noHovering="false">
 

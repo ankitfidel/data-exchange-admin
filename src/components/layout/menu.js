@@ -97,10 +97,10 @@ function Menus({
          <Link to="/dashboard" activeClassName="selected"> <Icon type="rocket" /> Dashboard</Link>
       </Menu.Item>
       <Menu.Item key="Companies" className="menulink" style={{'overflow': 'hidden'}}>
-         <Link activeClassName="selected"  to="/companies">  <Icon type="cloud-o" /> Companies</Link>
+         <Link activeClassName="selected"  to="/companies">  <i class="fa fa-building-o"></i> Companies</Link>
       </Menu.Item>
       <Menu.Item key="Users" className="menulink" style={{'overflow': 'hidden'}}>
-         <Link activeClassName="selected"  to="/users">  <Icon type="cloud-o" /> Users</Link>
+         <Link activeClassName="selected"  to="/users">  <i class="fa fa-users"></i> Users</Link>
       </Menu.Item>
 
 

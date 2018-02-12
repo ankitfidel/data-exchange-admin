@@ -44,13 +44,15 @@ class Profile extends React.Component {
 
    }
 render(){
+  document.title = "Profile";
   var email_id = cookie.load('email_id');
   var company_name = cookie.load('company_name');
+//  alert(company_name);
   var sidebarcolor = cookie.load('sidebarcolor');
   var headercolor = cookie.load('headercolor');
   var content1 = cookie.load('content1');
   var content2 = cookie.load('content2');
-var username = cookie.load('username');
+var adminUsername = cookie.load('adminUsername');
 var user_id = cookie.load('user_id');
 
   return (
@@ -63,9 +65,9 @@ var user_id = cookie.load('user_id');
 
                 </div>
                 <div className="profileInfo">
-                    <h1 style={{'fontSize': '1.5em', 'textTransform':'capitalize'}}>{username}</h1>
+                    <h1 style={{'fontSize': '1.5em', 'textTransform':'capitalize'}}>{adminUsername}</h1>
                     <p style={{'textTransform':'none'}}>{email_id}</p>
-                      <p style={{'textTransform':'none'}}>{company_name === true ? "" : "company_name"}</p>
+                      <p style={{'textTransform':'none'}}>{company_name != null ? "DataExchange" : company_name}</p>
 
 
                 </div>

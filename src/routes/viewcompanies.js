@@ -144,13 +144,15 @@ onTodoChange_domain(value){
   }
 
 render(){
+  document.title = "View Companies";
   var { selectedRowKeys, companyName, domain,company_name, website_url, support_email_id,logo,isRetailer } = this.state;
 
      return (
        <div>
        <Breadcrumb>
           <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/companies">Company: {this.state.company_name} </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company </a></Breadcrumb.Item>
+          <Breadcrumb.Item>{this.state.company_name}</Breadcrumb.Item>
         </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>

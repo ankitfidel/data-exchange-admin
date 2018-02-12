@@ -1,5 +1,5 @@
 import React from 'react'
-import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
+import {Menu, Icon, Popover, Badge, M,Avatar,Row, Col,Breadcrumb, Button,Card, Table, Modal, Switch, Radio, Form, Input, Checkbox } from 'antd'
 //const {LineChart, Line, AreaChart, Area, Brush, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 const FormItem = Form.Item;
 const InputGroup = Input.Group;
@@ -140,37 +140,43 @@ onTodoChange_address_line2(value){
      hashHistory.push("/useraddress");
   }
 render(){
+  document.title = "View User Address";
   var { selectedRowKeys, address_line1, address_line2, city, state,country,address_name,zip_code } = this.state;
 
      return (
        <div>
-
+       <Breadcrumb>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users">User</a></Breadcrumb.Item>
+          <Breadcrumb.Item>{this.state.user}</Breadcrumb.Item>
+          <Breadcrumb.Item>Address</Breadcrumb.Item>
+        </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 <Card noHovering="false">
-<h2 style={{textAlign: 'center'}}>View Company</h2>
+<h2 style={{textAlign: 'center'}}>View User Address</h2>
 
-   <FormItem label="address_line1:">
-           <Input placeholder="address_line1" value={address_line1} id="address_line1" onChange={e => this.onTodoChange_address_line1(e.target.value)}/>
+   <FormItem label="Address Line 1:">
+           <Input placeholder="Enter Address Line 1" value={address_line1} id="address_line1" onChange={e => this.onTodoChange_address_line1(e.target.value)}/>
 
 </FormItem>
-<FormItem label="address_line2:">
-        <Input placeholder="address_line2" value={this.state.address_line2} id="address_line2" onChange={e => this.onTodoChange_address_line2(e.target.value)}/>
+<FormItem label="Address Line 1:">
+        <Input placeholder="Enter Address Line 2" value={this.state.address_line2} id="address_line2" onChange={e => this.onTodoChange_address_line2(e.target.value)}/>
     </FormItem>
-    <FormItem label="city:">
-        <Input placeholder="city" value={this.state.city} id="city" onChange={e => this.onTodoChange_city(e.target.value)}/>
+    <FormItem label="City:">
+        <Input placeholder="Enter City" value={this.state.city} id="city" onChange={e => this.onTodoChange_city(e.target.value)}/>
     </FormItem>
-    <FormItem label="state:">
-        <Input placeholder="state"value={this.state.state} id="state" onChange={e => this.onTodoChange_state(e.target.value)}/>
+    <FormItem label="State:">
+        <Input placeholder="Enter State"value={this.state.state} id="state" onChange={e => this.onTodoChange_state(e.target.value)}/>
     </FormItem>
-    <FormItem label="country:">
-        <Input placeholder="country" value={this.state.country} id="country" onChange={e => this.onTodoChange_country(e.target.value)}/>
+    <FormItem label="Country:">
+        <Input placeholder="Enter Country" value={this.state.country} id="country" onChange={e => this.onTodoChange_country(e.target.value)}/>
     </FormItem>
-    <FormItem label="zip_code:">
-        <Input placeholder="zip_code" value={this.state.zip_code} id="zip_code" onChange={e => this.onTodoChange_zip_code(e.target.value)}/>
+    <FormItem label="ZIP code:">
+        <Input placeholder="Enter ZIP code" value={this.state.zip_code} id="zip_code" onChange={e => this.onTodoChange_zip_code(e.target.value)}/>
     </FormItem>
-    <FormItem label="address_name:">
-        <Input placeholder="address_name" value={this.state.address_name} id="address_name" onChange={e => this.onTodoChange_address_name(e.target.value)}/>
+    <FormItem label="Address Nmae:">
+        <Input placeholder="Enter Address Nmae" value={this.state.address_name} id="address_name" onChange={e => this.onTodoChange_address_name(e.target.value)}/>
     </FormItem>
 
 

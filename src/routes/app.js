@@ -29,10 +29,6 @@ var user_role = cookie.load('user_role');
 //alert(cookies)
 if(cookies==null || cookies == undefined ||cookies == ''){
   hashHistory.push("/login");
-}else{
-  if(user_role=='admin'){
-  //  hashHistory.push("/dashboard");
-  }
 }
 
 function App({ children, location, dispatch, app }) {

@@ -137,6 +137,7 @@ class UserAddress extends React.Component {
         }
 
 render(){
+  document.title = "User Address";
   const { selectedRowKeys, addressData, user_id ,user} = this.state;
   const rowSelection = {
        selectedRowKeys,
@@ -184,7 +185,11 @@ const hasSelected = selectedRowKeys.length > 0;
        <div>
        <Breadcrumb>
           <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/users"> User: {this.state.user} </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users"> User</a></Breadcrumb.Item>
+            <Breadcrumb.Item>{this.state.user}</Breadcrumb.Item>
+              <Breadcrumb.Item>Address</Breadcrumb.Item>
+
+
         </Breadcrumb><br />
 <Card noHovering="false">
 

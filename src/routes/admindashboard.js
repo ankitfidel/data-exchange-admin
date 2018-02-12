@@ -240,7 +240,9 @@ class Admin_dashboard extends React.Component {
     const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom, top2,userslist,devicelist,itemslist, bottom2 } = this.state;
 
     return (
+
       <div className="dashboard-3">
+
       <Row gutter={32} justify="space-around" align="middle">
       <Col lg={8} md={8}>
 
@@ -326,7 +328,6 @@ class Admin_dashboard extends React.Component {
 
 
         </Row>
-
 
 
       </div>

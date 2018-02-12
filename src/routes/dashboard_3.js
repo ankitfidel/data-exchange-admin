@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react'
 import {
   Row,
   Col,
-  Card,
+  Card,Breadcrumb,
   Carousel,
   Switch,
   Icon,
@@ -246,13 +246,16 @@ class Dashboard_3 extends React.Component {
   }
   render() {
     const { data, barIndex, left, right, refAreaLeft, refAreaRight, top, bottom,users,company, countsList, top2, bottom2 } = this.state;
-
+document.title = "Dashboard";
     return (
       <div className="dashboard-3">
+      <Breadcrumb>
+         <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+       </Breadcrumb><br />
       <Row gutter={32} justify="space-around" align="middle">
       <Col lg={8} md={8}>
 
-      <Card className="bleedblue" style={{ padding: '30px' }}>
+      <Card className="bleedblue" noHovering="false" style={{ padding: '30px' }}>
 
         <Col span={12}>
 
@@ -266,7 +269,7 @@ class Dashboard_3 extends React.Component {
       </Col>
       <Col lg={8} md={8}>
 
-      <Card className="bleedblue" style={{ padding: '30px' }}>
+      <Card className="bleedblue" noHovering="false" style={{ padding: '30px' }}>
         <Col span={12}><i className="fa fa-users fa-5x text-primary"></i></Col>
       <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>{this.state.users}</span><br />
       <span style={{ fontSize: 20 }} className="text-primary">No. of Users </span></Col>
@@ -275,7 +278,7 @@ class Dashboard_3 extends React.Component {
 
       <Col lg={8} md={8}>
 
-      <Card className="bleedblue" style={{ padding: '30px' }}>
+      <Card className="bleedblue" noHovering="false" style={{ padding: '30px' }}>
         <Col span={12}><i className="fa fa-usd fa-5x text-primary"></i></Col>
       <Col style={styles.textAlign} span={12}><span className="text-primary" style={{ fontSize: 32 }}>3200</span><br />
       <span style={{ fontSize: 20 }} className="text-primary">Total Sales </span></Col>
@@ -287,7 +290,6 @@ class Dashboard_3 extends React.Component {
 
             <Card title="Sales Overview" style={{'overflow':'hidden'}}>
             <div>
-            <Button className="primary update" onClick={this.zoomOut.bind( this )}>Zoom Out</Button>
              <ResponsiveContainer width={'100%'} height={350}>
             <LineChart
                      width={800}

@@ -3,7 +3,7 @@ import styles from './main.less'
 import { config } from '../../utils'
 
 const Footer = () => <div className={styles.footer}>
-  {config.footerText}
+  Data-Exchange. All Rights Reserved 2018.
 </div>
 
 export default Footer

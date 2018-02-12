@@ -75,7 +75,7 @@ class Loginpage extends React.Component {
            const user_role = response.data.result.user_role;
            const company_name = response.data.result.company_name;
            const email_id = response.data.result.email_id;
-           const username = response.data.result.username;
+           const adminUsername = response.data.result.username;
            const user_id = response.data.result.user_id;
          //   const sidebarcolor = response.data.result.theme.sidebar_color_class;
          // const headercolor =  response.data.result.theme.header_color_class;
@@ -99,10 +99,12 @@ class Loginpage extends React.Component {
           cookie.save('company_name', company_name, { path: '/' })
           cookie.save('email_id', email_id, { path: '/' })
        //   cookie.save('theme', theme, { path: '/' })
-        
-          cookie.save('username', response.data.result.username, { path: '/' })
+
+          cookie.save('adminUsername', response.data.result.username, { path: '/' })
           cookie.save('user_id', response.data.result.user_id, { path: '/' })
-           hashHistory.push("/dashboard");
+          hashHistory.push("/dashboard");
+          window.location.reload()
+          //
           console.log(JSON.stringify(response));
            }
 
@@ -117,7 +119,7 @@ class Loginpage extends React.Component {
 render(){
   var { selectedRowKeys,companyId, errormsg  } = this.state;
 
-
+document.title = "Login";
      return (
           <div className={styles.bg}>
        <div className={styles.form}>

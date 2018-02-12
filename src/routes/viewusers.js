@@ -139,34 +139,36 @@ onTodoChange_password(value){
 
 
 render(){
+  document.title = "View User";
   var { selectedRowKeys, username, password, first_name,user, last_name,email_id,isRetailer } = this.state;
 
      return (
        <div>
        <Breadcrumb>
           <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/users"> User: {this.state.user} </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users">User</a></Breadcrumb.Item>
+          <Breadcrumb.Item>{this.state.user}</Breadcrumb.Item>
         </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
 <Card noHovering="false">
 <h2 style={{textAlign: 'center'}}>View user</h2>
 
-   <FormItem label="username:">
+   <FormItem label="Username:">
            <Input placeholder="username" value={username} id="username" onChange={e => this.onTodoChange_username(e.target.value)}/>
 
 </FormItem>
-<FormItem label="password:">
+<FormItem label="Password:">
         <Input placeholder="password" value={this.state.password} id="password" onChange={e => this.onTodoChange_password(e.target.value)}/>
     </FormItem>
-    <FormItem label="first_name:">
-        <Input placeholder="first_name" value={this.state.first_name} id="first_name" onChange={e => this.onTodoChange_first_name(e.target.value)}/>
+    <FormItem label="First Name:">
+        <Input placeholder="Enter First Name" value={this.state.first_name} id="first_name" onChange={e => this.onTodoChange_first_name(e.target.value)}/>
     </FormItem>
-    <FormItem label="last_name:">
-        <Input placeholder="last_name"value={this.state.last_name} id="last_name" onChange={e => this.onTodoChange_last_name(e.target.value)}/>
+    <FormItem label="Last Name:">
+        <Input placeholder="Enter Last Name"value={this.state.last_name} id="last_name" onChange={e => this.onTodoChange_last_name(e.target.value)}/>
     </FormItem>
-    <FormItem label="email_id:">
-        <Input placeholder="email_id" value={this.state.email_id} id="email_id" onChange={e => this.onTodoChange_email_id(e.target.value)}/>
+    <FormItem label="E-mail:">
+        <Input placeholder="Enter E-mail Id" value={this.state.email_id} id="email_id" onChange={e => this.onTodoChange_email_id(e.target.value)}/>
     </FormItem>
 
 

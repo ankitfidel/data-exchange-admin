@@ -98,6 +98,7 @@ class Addcompany extends React.Component {
 
 
 render(){
+  document.title = "Add Company";
   const { selectedRowKeys } = this.state;
      return (
        <div>

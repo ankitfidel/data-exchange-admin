@@ -102,6 +102,7 @@ class Addaddress extends React.Component {
      }
 
 render(){
+  document.title = "Add Address";
   const { selectedRowKeys } = this.state;
      return (
        <div>

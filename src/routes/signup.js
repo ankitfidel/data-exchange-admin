@@ -61,7 +61,7 @@ const emailId = document.getElementById('emailId').value;
   //  error()
   });
   }
-
+document.title = "Signup";
   return (
     <div className={styles.bg}>
     <div className={styles.form}>

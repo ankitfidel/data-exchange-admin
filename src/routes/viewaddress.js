@@ -140,13 +140,16 @@ onTodoChange_address_line2(value){
      hashHistory.push("/useraddress");
   }
 render(){
+  document.title = "View Address";
   var { selectedRowKeys, address_line1, address_line2, city, state,country,address_name,zip_code } = this.state;
 
      return (
        <div>
        <Breadcrumb>
           <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/users"> User: {this.state.user} </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/users"> User </a></Breadcrumb.Item>
+          <Breadcrumb.Item>{this.state.user}</Breadcrumb.Item>
+          <Breadcrumb.Item>Address</Breadcrumb.Item>
         </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>

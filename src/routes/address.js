@@ -173,6 +173,7 @@ class Address extends React.Component {
     //  alert();
         }
 render(){
+  document.title = "Address";
   const { selectedRowKeys, addressData,addresscompany, company_id } = this.state;
 
   const rowSelection = {
@@ -221,7 +222,9 @@ const hasSelected = selectedRowKeys.length > 0;
        <div>
        <Breadcrumb>
           <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/companies">Company: {this.state.company_name} </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company</a></Breadcrumb.Item>
+<Breadcrumb.Item>{this.state.company_name}</Breadcrumb.Item>
+
         </Breadcrumb><br />
 <Card noHovering="false">
 

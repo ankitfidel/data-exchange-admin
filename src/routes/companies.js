@@ -147,6 +147,7 @@ class Companies extends React.Component {
            });
          }
 render(){
+  document.title = "Companies";
   const { selectedRowKeys, tableData, company_id } = this.state;
   const rowSelection = {
        selectedRowKeys,
@@ -193,10 +194,10 @@ const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
        <Breadcrumb>
-          <Breadcrumb.Item><a href="#/dashboard">Dashboard  </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company</a></Breadcrumb.Item>
         </Breadcrumb><br />
 <Card noHovering="false">
-
 <Button type="primary" onClick={this.addcompany}>Add Company</Button> &nbsp; <br /><br />
  <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="company_id" columns={[
    {

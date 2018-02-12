@@ -11,7 +11,7 @@ import { browserHistory, hashHistory } from 'dva/router';
 
 import cookie from 'react-cookies'
 
-var username = cookie.load('username');
+var adminUsername = cookie.load('adminUsername');
 class BadgeBox extends React.Component {
 
    constructor(props) {
@@ -55,9 +55,8 @@ render(){
 
  <Menu mode="horizontal" style={{'background':'#fc3d66', 'zIndex': 999}}>
 
-         <Menu.Item onClick={this.fullScreen}  className={styles.badge}><Icon style={{ 'color':'white'}} type="arrows-alt" title="Full Screen" className={styles.size}/></Menu.Item>
 
-        <SubMenu  title={<p style={{'textTransform': 'none','color':'white'}}><Icon type="user" /><span style={{'textOverflow':'ellipsis'}}>{username} </span><Icon style={{'float': 'right','margin':'15px 20px 0 10px'}} type="down" /></p>}>
+        <SubMenu  title={<p style={{'textTransform': 'none','color':'white'}}><Icon type="user" /><span style={{'textOverflow':'ellipsis'}}>{adminUsername} </span><Icon style={{'float': 'right','margin':'15px 20px 0 10px'}} type="down" /></p>}>
           <Menu.Item><a onClick={this.profile} className={styles.logoutbtn}>Profile</a></Menu.Item>
             <Menu.Item><a onClick={this.loggout} className={styles.logoutbtn}>Logout</a></Menu.Item>
 

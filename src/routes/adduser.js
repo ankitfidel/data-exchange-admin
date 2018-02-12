@@ -113,6 +113,7 @@ class Addusers extends React.Component {
       }
 
 render(){
+  document.title = "Add User";
   const { selectedRowKeys,companyId  } = this.state;
 
 

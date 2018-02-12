@@ -102,6 +102,7 @@ class Adduseraddress extends React.Component {
 
 
 render(){
+  document.title = "Add User Address";
   const { selectedRowKeys } = this.state;
      return (
        <div>
