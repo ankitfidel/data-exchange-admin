@@ -43,6 +43,7 @@ class Addcompany extends React.Component {
           cookies: cookie.loadAll()
         }
         this.addcompany = this.addcompany.bind(this);
+        this.back = this.back.bind(this);
 
    }
 
@@ -60,6 +61,9 @@ class Addcompany extends React.Component {
      //     console.log(error);
      //   });
 
+     back() {
+  hashHistory.push('/companies')
+}
      addcompany(){
 
 
@@ -103,8 +107,8 @@ render(){
      return (
        <div>
        <Breadcrumb>
-          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/companies"> Company </a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/dashboard"><Icon type="home" /> Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/companies">Company </a></Breadcrumb.Item>
         </Breadcrumb><br />
 <Row>
     <Col span={12} offset={6}>
@@ -128,12 +132,15 @@ render(){
     <Input placeholder="Enter Logo Url" defaultValue="" id="logo"/>
 </FormItem>
 <FormItem>
-    <label>   <input type="checkbox" id="isRetailer" value="is Retailer" /> is Retailer</label>
+    <label><input type="checkbox" id="isRetailer" value="is Retailer" /> Is Retailer</label>
 </FormItem>
+<div style={{textAlign: 'right'}}>
        <FormItem>
-          <Button type="primary" onClick={this.addcompany}>Save</Button> &nbsp; &nbsp;
-          <Button>Cancel</Button>
+          <Button onClick={this.back}>Cancel</Button>&nbsp; &nbsp;
+          <Button type="primary" onClick={this.addcompany}>Save</Button>        
        </FormItem>
+       </div>
+       
 </Form>
  </Card>
     </Col>

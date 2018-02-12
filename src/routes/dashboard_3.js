@@ -250,7 +250,7 @@ document.title = "Dashboard";
     return (
       <div className="dashboard-3">
       <Breadcrumb>
-         <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+         <Breadcrumb.Item><Icon type="home" /> Dashboard</Breadcrumb.Item>
        </Breadcrumb><br />
       <Row gutter={32} justify="space-around" align="middle">
       <Col lg={8} md={8}>

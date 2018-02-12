@@ -94,7 +94,7 @@ function Menus({
 
 
       <Menu.Item key="dashboard" className="menulink" style={{'overflow': 'hidden'}}>
-         <Link to="/dashboard" activeClassName="selected"> <Icon type="rocket" /> Dashboard</Link>
+         <Link to="/dashboard" activeClassName="selected"> <Icon type="home" /> Dashboard</Link>
       </Menu.Item>
       <Menu.Item key="Companies" className="menulink" style={{'overflow': 'hidden'}}>
          <Link activeClassName="selected"  to="/companies">  <i class="fa fa-building-o"></i> Companies</Link>

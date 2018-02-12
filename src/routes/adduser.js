@@ -29,8 +29,12 @@ class Addusers extends React.Component {
 
   constructor(props) {
       super(props);
+      this.back = this.back.bind(this);
    }
 
+   back() {
+    hashHistory.push('/users')
+   }
    state = {
      companyId:'',
        bordered: true,
@@ -120,7 +124,7 @@ render(){
      return (
        <div>
        <Breadcrumb>
-          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/dashboard"><Icon type="home" /> Dashboard</a></Breadcrumb.Item>
           <Breadcrumb.Item><a href="#/users"> Users </a></Breadcrumb.Item>
         </Breadcrumb><br />
 <Row>
@@ -133,7 +137,7 @@ render(){
        <FormItem label="Password:">
            <Input placeholder="Enter Password" defaultValue="" id="password"/>
        </FormItem>
-       <FormItem label="first Name:">
+       <FormItem label="First Name:">
            <Input placeholder="Enter First Name" defaultValue="" id="firstName"/>
        </FormItem>
        <FormItem label="Last Name:">
@@ -146,12 +150,12 @@ render(){
 
     <FormItem label="User Role:">
     <select style={{ width: 200  }} className={styles.selectopt} id="userRoleId">
-   <option  className={styles.optioncus} value="3">dashboard user</option>
-   <option className={styles.optioncus} value="2">dashboard admin</option>
+   <option  className={styles.optioncus} value="3">Dashboard User</option>
+   <option className={styles.optioncus} value="2">Dashboard Admin</option>
  </select>
     </FormItem>
 
-       <FormItem label="Company Id:">
+       <FormItem label="Company Name:">
        <select id= "selectedCompanyId" className={styles.selectopt} style= {{ width :200}}>
     { this.state.comapnyrole }
       </select>
@@ -159,10 +163,12 @@ render(){
 
 
 
+      <div style={{textAlign: 'right'}}>
        <FormItem>
-          <Button type="primary" onClick={this.addusers}>Save</Button> &nbsp; &nbsp;
-          <Button>Cancel</Button>
+          <Button onClick={this.back}>Cancel</Button>&nbsp; &nbsp;
+          <Button type="primary" onClick={this.addusers} >Save</Button>          
        </FormItem>
+       </div>
 
  </Card>
     </Col>

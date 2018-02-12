@@ -69,7 +69,7 @@ function Sider({siderFold,siderFoldRight, menuTheme,darkTheme,location, changeTh
 
 
             <Menu.Item key="dashboard" className="menulink" style={{'overflow': 'hidden'}}>
-               <Link to="/dashboard" activeClassName="selected"> <Icon type="rocket" /> Dashboard</Link>
+               <Link to="/dashboard" activeClassName="selected"> <Icon type="home" /> Dashboard</Link>
             </Menu.Item>
             <Menu.Item key="Companies" className="menulink" style={{'overflow': 'hidden'}}>
                <Link activeClassName="selected"  to="/companies">  <i className="fa fa-building-o"></i> &nbsp;&nbsp;&nbsp;Companies</Link>

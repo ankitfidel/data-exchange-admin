@@ -20,6 +20,15 @@ function cancel(e) {
   console.log(e);
   message.info('Company not deleted');
 }
+
+var theme = {
+    disabledStyle: { background: 'gray'},
+    overStyle: { background: 'red'},
+    activeStyle: { background: 'red'},
+    pressedStyle: {background: 'magenta', fontWeight: 'bold'},
+    overPressedStyle: {background: 'purple', fontWeight: 'bold'}
+}
+
 class Companies extends React.Component {
 
   constructor(props) {
@@ -194,36 +203,45 @@ const hasSelected = selectedRowKeys.length > 0;
      return (
        <div>
        <Breadcrumb>
-          <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-          <Breadcrumb.Item><a href="#/companies">Company</a></Breadcrumb.Item>
+          <Breadcrumb.Item><a href="#/dashboard"> <Icon type="home" /> Dashboard</a></Breadcrumb.Item>
+          <Breadcrumb.Item>Companies</Breadcrumb.Item>
         </Breadcrumb><br />
 <Card noHovering="false">
 <Button type="primary" onClick={this.addcompany}>Add Company</Button> &nbsp; <br /><br />
- <Table pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="company_id" columns={[
+ <Table style={{textAlign: 'center'}} pagination={{ pageSize: 10,  showSizeChanger:true}} scroll={{ x: 768 }} rowKey="company_id" columns={[
    {
+     textAlign: 'left',
      title: 'Logo',
      dataIndex: 'logo',
      className: styles.logo,
+     textAlign: 'left',
      render: logo => <img src={logo} />,
 
    },{
-   title: 'Name',
-   dataIndex: 'name',
+   textAlign: 'left',
+ title: 'Name',
+   dataIndex: 'name'
  }, {
-   title: 'Domain',
-   dataIndex: 'domain',
+  textAlign: 'left',
+  title: 'Domain',
+   dataIndex: 'domain'
  }, {
-   title: 'Website Url',
+   textAlign: 'left',
+ title: 'Website Url',
    dataIndex: 'website_url',
+   
  },
  {
-  title: 'Support Email Id',
-  dataIndex: 'support_email_id'
+  textAlign: 'left',
+ title: 'Support Email Id',
+  dataIndex: 'support_email_id',
+ 
 },
 {
+ textAlign: 'left',
  title: 'Is Retailer',
  dataIndex: 'is_retailer',
-  render: is_retailer => <p>{is_retailer === true ? "yes" :"no"}</p>
+  render: is_retailer => <p>{is_retailer === true ? "Yes" :"No"}</p>
 },
 {
   title: 'Action',

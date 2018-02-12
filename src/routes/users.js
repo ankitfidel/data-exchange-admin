@@ -223,8 +223,8 @@ render(){
   return (
     <div>
     <Breadcrumb>
-       <Breadcrumb.Item><a href="#/dashboard">Dashboard</a></Breadcrumb.Item>
-       <Breadcrumb.Item><a href="#/users">Users</a></Breadcrumb.Item>
+       <Breadcrumb.Item><a href="#/dashboard"> <Icon type="home" /> Dashboard</a></Breadcrumb.Item>
+       <Breadcrumb.Item>Users</Breadcrumb.Item>
      </Breadcrumb><br />
  <Card noHovering="false">
 
@@ -252,7 +252,7 @@ dataIndex: 'email_id'
 {
 title: 'Action',
 dataIndex: 'user_id',
-render: user_id => <div>  <Popconfirm title="Are you sure delete this user?" onConfirm={() => this.start(user_id)} onCancel={cancel} okText="Yes" cancelText="No">
+render: user_id => <div>  <Popconfirm title="Are you sure delete this user?" onConfirm={() => this.start(user_id)} okText="Yes" cancelText="No">
   <a href="#"><Icon type="delete" /> &nbsp;Delete user</a>
 </Popconfirm> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.useredit(user_id)}><i className="fa fa-pencil"></i>&nbsp; Edit</a>&nbsp;&nbsp; |&nbsp;&nbsp; <a href="javascript:void(0)" onClick={() => this.useraddressedit(user_id)}> <i className="fa fa-address-card" title="View address" aria-hidden="true"></i>&nbsp; Address</a> </div>
 }
